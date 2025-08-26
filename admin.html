@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #005ca9;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #0072ce;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 20px;
+    }
+    .admin-section {
+      margin-bottom: 40px;
+    }
+    .admin-section h3 {
+      color: #005ca9;
+      margin-bottom: 10px;
+    }
+    .admin-section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    .admin-section table th, .admin-section table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    .admin-section table th {
+      background: #0072ce;
+      color: white;
+    }
+    .admin-section button {
+      background: #005ca9;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .admin-section button:hover {
+      background: #003f7f;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+  <nav>
+    <a href="#users">Manage Users</a>
+    <a href="#quiz">Manage Quiz</a>
+    <a href="#courses">Manage Courses</a>
+    <a href="#testimonials">Manage Testimonials</a>
+    <a href="#gallery">Manage Gallery</a>
+  </nav>
+  <section id="users" class="admin-section">
+    <h3>Manage Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="userTable">
+        <!-- User rows will be dynamically added here -->
+      </tbody>
+    </table>
+    <button onclick="addUser()">Add User</button>
+  </section>
+  <section id="quiz" class="admin-section">
+    <h3>Manage Quiz</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Options</th>
+          <th>Answer</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="quizTable">
+        <!-- Quiz rows will be dynamically added here -->
+      </tbody>
+    </table>
+    <button onclick="addQuizQuestion()">Add Question</button>
+  </section>
+  <script>
+    // Verify if the user is an admin
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('token');
+      const role = localStorage.getItem('role');
+
+      if (!token || role !== 'Admin') {
+        alert('Access denied. Admins only.');
+        window.location.href = 'Homepage.html'; // Redirect to homepage
+      }
+    });
+
+    // Example: Fetch users from the backend
+    async function fetchUsers() {
+      try {
+        const response = await fetch('http://localhost:5000/api/users', {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        });
+        const users = await response.json();
+        const userTable = document.getElementById('userTable');
+        userTable.innerHTML = ''; // Clear existing rows
+        users.forEach(user => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${user.username}</td>
+            <td>${user.role}</td>
+            <td>
+              <button onclick="editUser('${user._id}')">Edit</button>
+              <button onclick="deleteUser('${user._id}')">Delete</button>
+            </td>
+          `;
+          userTable.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    }
+
+    // Call fetchUsers when the page loads
+    document.addEventListener('DOMContentLoaded', fetchUsers);
+  </script>
+</body>
+</html>

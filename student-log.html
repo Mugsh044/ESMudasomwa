@@ -1,0 +1,153 @@
+<!-- Save as login_student.html or add to your project -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Login | ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-student-form {
+      background: #fff;
+      padding: 38px 32px 28px 32px;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      max-width: 400px;
+      width: 100%;
+      margin: 40px 0;
+    }
+    .login-student-form h2 {
+      color: #005ca9;
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 2rem;
+    }
+    .login-student-form label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    .login-student-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .login-student-form button {
+      width: 100%;
+      background: linear-gradient(90deg, #0072ce 0%, #ffd200 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0;
+      font-size: 1.08rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, color 0.2s;
+    }
+    .login-student-form button:hover {
+      background: linear-gradient(90deg, #ffd200 0%, #0072ce 100%);
+      color: #0072ce;
+    }
+    .login-student-form .error-message {
+      color: #d32f2f;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.08rem;
+    }
+    .login-student-form .success-message {
+      color: #219150;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.08rem;
+    }
+    .login-student-form .forgot-link {
+      display: block;
+      text-align: right;
+      margin-bottom: 10px;
+      font-size: 0.98rem;
+      color: #0072ce;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .login-student-form .forgot-link:hover {
+      color: #ffd200;
+    }
+  </style>
+</head>
+<body>
+  <form class="login-student-form" id="studentLoginForm" autocomplete="off">
+    <h2>Student Login</h2>
+    <label for="studentUsername">Username or Email</label>
+    <input type="text" id="studentUsername" name="studentUsername" required />
+
+    <label for="studentPassword">Password</label>
+    <input type="password" id="studentPassword" name="studentPassword" required minlength="6" />
+
+    <a href="#" class="forgot-link">Forgot password?</a>
+
+    <button type="submit">Login</button>
+    <div class="error-message" id="studentErrorMsg"></div>
+    <div class="success-message" id="studentSuccessMsg"></div>
+  </form>
+
+  <script>
+    document.getElementById('studentLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Demo validation (replace with backend logic)
+      const username = document.getElementById('studentUsername').value;
+      const password = document.getElementById('studentPassword').value;
+      const errorMsg = document.getElementById('studentErrorMsg');
+      const successMsg = document.getElementById('studentSuccessMsg');
+      errorMsg.textContent = "";
+      successMsg.textContent = "";
+      if (username === "" || password === "") {
+        errorMsg.textContent = "Please fill in all fields.";
+        return;
+      }
+      // Simulate login success
+      successMsg.textContent = "Login successful! (Demo only)";
+      this.reset();
+    });
+    
+  async function handleLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem('token', data.token); // Save JWT token
+        alert('Login successful!');
+        window.location.href = 'Homepage.html'; // Redirect to homepage
+      } else {
+        alert(data.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    }
+  }
+</script>

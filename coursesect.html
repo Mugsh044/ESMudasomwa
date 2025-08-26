@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ES Mudasomwa</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background:linear-gradient(135deg, #74ebd5, #9face6);
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+  .courses{
+    height: 600px;
+  }
+
+    nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;
+    }
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+    .hero {
+      background: linear-gradient(rgba(0, 92, 169, 0.6), rgba(0, 92, 169, 0.6)), url('hero-image.jpg') center/cover;
+      text-align: center;
+      padding: 100px 20px;
+      color: white;
+    }
+    .hero h2 { font-size: 2.8rem; margin-bottom: 15px; }
+    .hero p { font-size: 1.2rem; margin-bottom: 30px; }
+    .cta-btn {
+      background-color: #ffbf00; color: #2c3e50; padding: 12px 24px;
+      text-decoration: none; font-weight: bold; border-radius: 4px;
+    }
+
+    section { padding: 60px 10%; }
+    section h3 { font-size: 2rem; color: #005ca9; margin-bottom: 20px; text-align: center; }
+
+    .course-list, .faculty-grid {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;
+    }
+    .course, .card {
+      background-color: white; border: 1px solid #dce3ea;
+      border-radius: 8px; padding: 20px; width: 250px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;
+    }
+    .course h4, .card h4 { color: #005ca9; margin-bottom: 10px; }
+
+    .learning ul, .support ul, .news ul {
+      list-style: none; display: flex; justify-content: center; gap: 20px; font-size: 1.1rem;
+    }
+
+    .testimonials blockquote {
+      font-style: italic; background-color: #e8f0fc;
+      border-left: 5px solid #0072ce; padding: 15px;
+      margin: 0 auto; max-width: 600px; text-align: center;
+    }
+
+    .campus img {
+      display: block; max-width: 100%; margin: 20px auto; border-radius: 10px;
+    }
+
+    .admissions a, .refer button, .prospectus a {
+      background-color: #0072ce; color: white; padding: 10px 20px;
+      text-decoration: none; border-radius: 4px; display: inline-block; margin-top: 10px;
+    }
+
+    .refer {
+      background-color: #e3f2fd; padding: 40px; text-align: center; border-radius: 10px;
+    }
+    .refer input {
+      padding: 10px; width: 250px; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px;
+    }
+
+    .card img {
+      width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #2c3e50; color: white; text-align: center; padding: 20px;
+        }
+
+   
+   
+  </style>
+</head>
+<body>
+   <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+     
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+ 
+  <section class="courses">
+    <h3>Explore Our Courses</h3>
+    <div class="course-list">
+      <div class="course"><h4 class="bold"><a href="gd layout.html">O'Level</a></h4><p>🔥 Dream big, start now.</p></div>
+      <div class="course"><h4 class="bold"><a href="A'Level.html">A'Level</a></h4><p>📚 Master now, lead later.</p></div>
+      <div class="course"><h4 class="bold"><a href="candoption.html">Candidat_Libre</a></h4><p>🧠 Own it. Prove it.</p></div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy;2025 ES Mudasomwa | Courses Section</p>
+    
+  </footer>

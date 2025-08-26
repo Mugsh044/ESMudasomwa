@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background:linear-gradient(135deg, #74ebd5, #9face6);
+      padding: 30px;
+      color: #333;
+    }
+    h2 {
+      color: #005ca9;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    button {
+      background-color: #0072ce;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #005ca9;
+    }
+     nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;
+    }
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+  </style>
+</head>
+<body>
+      <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+
+  <h2>Newcomers Application Form</h2>
+  <form onsubmit="submitForm(event)">
+    
+    <div class="section">
+      <h3>👤 Personal Details</h3>
+      <label>Full Name</label>
+      <input type="text" required />
+      <label>Date of Birth</label>
+      <input type="date" required />
+      <label>Email Address</label>
+      <input type="email" required />
+      <label>Phone Number</label>
+      <input type="tel" required />
+    
+
+      <label> Province</label>
+       <select required>
+        <option value="">-- Select --</option>
+        <option>West</option>
+        <option>East</option>
+        <option>South</option>
+         <option>North</option>
+         </select>
+      <label>District</label>
+      <input type="text" required />
+      <label>Sector</label>
+      <input type="text" required />
+    </div>
+
+    <div class="section">
+      <h3>🎓 Education Level</h3>
+      
+      <label> Year Of Issue</label>
+      <select required>
+        <option value="">-- Select --</option>
+        <option>Senior One</option>
+        <option>Senior Two</option>
+        <option>Senior Three</option>
+         <option>Senior Four</option>
+        <option>senior Five</option>
+        <option>sSenior Six</option>
+      </select>
+      <label>Upload Transcript (optional)</label>
+      <input type="file" />
+    </div>
+
+    <div class="section">
+      <h3>🗣  Languages Proficiency</h3>
+      <label>What's your first language?</label>
+      <select required>
+        <option value="">-- Select --</option>
+        <option>English</option>
+        <option>Kinyarwanda</option>
+        <option>Kiswahili</option>
+      </select>
+      <label>If None of these, Enter Yours</label>
+      <input type="text" placeholder="e.g. France" />
+    </div>
+
+    <div class="section">
+      <h3>📚 Course Selection</h3>
+      <label>Program Applied For</label>
+      <select required>
+        <option value="">-- Select --</option>
+        <option>Odinary Level</option>
+        <option>Advanced Level</option>
+        <option>Candidat_Libre</option>
+      </select>
+      <label>Preferred Study Mode</label>
+      <select required>
+        <option value="">-- Select --</option>
+        <option>Online</option>
+        <option>On-Campus</option>
+        <option>Blended</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <h3>📨 Referees</h3>
+      <label>Referee 1 Name & Email</label>
+      <input type="text" required placeholder="Type name here"/>
+      <input type="email" required placeholder="Type Email here" />
+      <label>Referee 2 Name & Email</label>
+      <input type="text"placeholder="Type name here" />
+      <input type="email"placeholder="Type Email here" />
+    </div>
+
+    <div class="section">
+      <h3>📋 Declaration</h3>
+      <label>
+        <input type="checkbox" required />
+        I confirm that the information provided is accurate and complete.
+      </label>
+    </div>
+
+    <div class="section">
+      <h3>🧠 Accessibility & Monitoring</h3>
+      <label>Do you have any disabilities or special needs?</label>
+      <select>
+        <option value="">-- Select --</option>
+        <option>No</option>
+        <option>Dyslexia</option>
+        <option>Visual impairment</option>
+        <option>Hearing impairment</option>
+        <option>Mobility issues</option>
+        <option>Other</option>
+      </select>
+      <label>Ethnic Origin (optional)</label>
+      <input type="text" />
+    </div>
+
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      alert("Thank you! Your application has been submitted.");
+    }
+  </script>
+   <footer>
+    <p>&copy;2025 ES Mudasomwa | Application Form</p>
+    
+  </footer>
+
+</body>
+</html>

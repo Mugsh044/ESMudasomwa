@@ -1,0 +1,184 @@
+<!-- Create a new file: register_admin.html or add this to your registration page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Registration | ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .register-admin-form {
+      background: #fff;
+      padding: 38px 32px 28px 32px;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      max-width: 400px;
+      width: 100%;
+      margin: 40px 0;
+    }
+    .register-admin-form h2 {
+      color: #005ca9;
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 2rem;
+    }
+    .register-admin-form label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    .register-admin-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .register-admin-form button {
+      width: 100%;
+      background: linear-gradient(90deg, #0072ce 0%, #ffd200 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0;
+      font-size: 1.08rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, color 0.2s;
+    }
+    .register-admin-form button:hover {
+      background: linear-gradient(90deg, #ffd200 0%, #0072ce 100%);
+      color: #0072ce;
+    }
+    .register-admin-form .success-message {
+      color: #219150;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.08rem;
+    }
+  </style>
+</head>
+<body>
+  <form class="register-admin-form" id="adminRegisterForm" autocomplete="off">
+    <h2>Admin Registration</h2>
+    <label for="adminName">Full Name</label>
+    <input type="text" id="adminName" name="adminName" required />
+
+    <label for="adminEmail">Email Address</label>
+    <input type="email" id="adminEmail" name="adminEmail" required />
+
+    <label for="adminUsername">Username</label>
+    <input type="text" id="adminUsername" name="adminUsername" required />
+
+    <label for="adminPassword">Password</label>
+    <input type="password" id="adminPassword" name="adminPassword" required minlength="6" />
+
+    <label for="adminConfirmPassword">Confirm Password</label>
+    <input type="password" id="adminConfirmPassword" name="adminConfirmPassword" required minlength="6" />
+
+    <button type="submit">Register as Admin</button>
+    <div class="success-message" id="adminSuccessMsg"></div>
+  </form>
+
+  <script>
+
+
+  async function registerAdmin(event) {
+    event.preventDefault();
+    const username = document.getElementById('adminUsername').value;
+    const password = document.getElementById('adminPassword').value;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/register-admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.message);
+        window.location.href = 'login_admin.html'; // Redirect to admin login
+      } else {
+        alert(data.message || 'Failed to register admin.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    }
+  }
+
+
+
+  async function registerAdmin(event) {
+    event.preventDefault();
+    const username = document.getElementById('adminUsername').value;
+    const password = document.getElementById('adminPassword').value;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/register-admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.message);
+        window.location.href = 'Homepage.html'; // Redirect to the homepage
+      } else {
+        alert(data.message || 'Failed to register admin.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    }
+  }
+
+  document.getElementById('adminRegisterForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const pass = document.getElementById('adminPassword').value;
+    const confirm = document.getElementById('adminConfirmPassword').value;
+    const msg = document.getElementById('adminSuccessMsg');
+    if (pass !== confirm) {
+      msg.textContent = "Passwords do not match!";
+      msg.style.color = "#d32f2f";
+      return;
+    }
+    registerAdmin(e); // Call the registerAdmin function
+  });
+
+
+
+    document.getElementById('adminRegisterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Simple password match check (for demo)
+      const pass = document.getElementById('adminPassword').value;
+      const confirm = document.getElementById('adminConfirmPassword').value;
+      const msg = document.getElementById('adminSuccessMsg');
+      if (pass !== confirm) {
+        msg.textContent = "Passwords do not match!";
+        msg.style.color = "#d32f2f";
+        return;
+      }
+      // Here you would send the data to your backend for real registration
+      msg.textContent = "Registration successful! (Demo only)";
+      msg.style.color = "#219150";
+      this.reset();
+    });
+  </script>
+</body>
+</html>

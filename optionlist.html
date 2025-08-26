@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin-left: 15px;
+      margin-right: 10px;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      padding-top: 15px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #005ca9;
+      margin-bottom: 40px;
+    }
+
+    .combo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .combo-card {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .combo-card:hover {
+      transform: scale(1.05);
+    }
+
+    .combo-title {
+      font-size: 1.5rem;
+      color: #0072ce;
+      margin-bottom: 10px;
+    }
+
+    .combo-desc {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    #selectedCombo {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #004080;
+      background-color: #eef6ff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.03);
+      display: none;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+     nav {
+      background-color: #005ca9;
+      display: flex;
+    
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;
+      width: 1400px;
+    }
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+
+    
+  </style>
+</head>
+<body>
+     <nav>
+    <h2 class="logo">ES Mudasomwa</h2>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav> 
+  <h1>🎓 Choose Your Combination</h1>
+<div class="combo-grid">
+<div class="combo-card" onclick="selectCombo('MCB – Mathematics, Computer Science, Biology')">
+      <a href="mcb.html"><h3><div class="combo-title">MCB</div></h3></a>
+      <div class="combo-desc">Maths, CS & Biology – blends analytics with bioinformatics & digital fields.</div>
+    </div>
+  
+<div class="combo-card" onclick="selectCombo('MCE – Mathematics,Computer Science,Economics')">
+      <a href="mce.html"><h3><div class="combo-title">MCE</div></h3></a>
+      <div class="combo-desc">Mathematics, Computer & Economics – ideal for engineering & Business management.</div>
+    </div>
+
+  <div class="combo-card" onclick="selectCombo('MEG – Mathematics, Economics, Geography')">
+      <a href="meg.html"><h3><div class="combo-title">MEG</div></h3></a>
+      <div class="combo-desc">Mathematics, Economics & Geography – great for social sciences and civil service.</div>
+    </div>  
+ 
+  <div class="combo-card" onclick="selectCombo('PCB – Physics, Chemistry, Biology')">
+      <a href="pcb.html"><h3><div class="combo-title">PCB</div></h3></a>
+      <div class="combo-desc">Physics, Chemistry & Biology – suited for medical and life science paths.</div>
+    </div>
+ </div>
+  
+    <div id="selectedCombo"></div>
+  
+
+  <script>
+    function selectCombo(comboText) {
+      const box = document.getElementById("selectedCombo");
+      box.textContent = `✅ You selected: ${comboText}`;
+      box.style.display = "block";
+    }
+  </script>
+<footer>
+    <p>&copy;2025 ES Mudasomwa | Option List</p>
+    
+  </footer>
+</body>
+</html>

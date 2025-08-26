@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ES Mudasomwa</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;
+    }
+
+
+   
+
+
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+    .hero {
+      background: linear-gradient(rgba(0, 92, 169, 0.6), rgba(0, 92, 169, 0.6)), url('hero-image.jpg') center/cover;
+      text-align: center;
+      padding: 100px 20px;
+      color: white;
+      line-height: 1.6;
+    }
+    .hero h2 { font-size: 2.8rem; margin-bottom: 15px; }
+    .hero p { font-size: 1.2rem; margin-bottom: 30px;color: yellow; }
+    .cta-btn {
+      background-color: #00ff37; color: #2c3e50; padding: 12px 24px;
+      text-decoration: none; font-weight: bold; border-radius: 4px;
+    }
+
+    section { padding: 60px 10%; }
+    section h3 { font-size: 2rem; color: #005ca9; margin-bottom: 20px; text-align: center; }
+
+    .course-list, .faculty-grid {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;
+    }
+    .course, .card {
+      background-color: white; border: 1px solid #dce3ea;
+      border-radius: 8px; padding: 20px; width: 250px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;
+    }
+    .course h4, .card h4 { color: #005ca9; margin-bottom: 10px; }
+
+    .learning ul, .support ul, .news ul {
+      list-style: none; display: flex; justify-content: center; gap: 20px; font-size: 1.1rem;
+    }
+
+    .testimonials blockquote {
+      font-style: italic; background-color: #e8f0fc;
+      border-left: 5px solid #0072ce; padding: 15px;
+      margin: 0 auto; max-width: 600px; text-align: center;
+    }
+
+    .campus img {
+      display: block; max-width: 100%; margin: 20px auto; border-radius: 10px;
+    }
+
+    .admissions a, .refer button, .prospectus a {
+      background-color: #0072ce; color: white; padding: 10px 20px;
+      text-decoration: none; border-radius: 4px; display: inline-block; margin-top: 10px;
+    }
+
+    .refer {
+      background-color: #e3f2fd; padding: 40px; text-align: center; border-radius: 10px;
+    }
+    .refer input {
+      padding: 10px; width: 250px; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px;
+    }
+
+    .card img {
+      width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #2c3e50; color: white; text-align: center; padding: 20px;
+        }
+
+    /* Chat Button */
+    #chat-widget {
+      position: fixed; bottom: 20px; right: 20px;
+    }
+    #chat-widget button {
+      background-color: #0072ce; color: white;
+      padding: 12px 20px; border-radius: 50px; border: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer;
+    }
+     .course {
+      background-color: #00ffff00; color: #2c3e50; padding: 12px 24px;
+      text-decoration: none; font-weight: bold; border-radius: 4px;
+    }
+
+    .bold {
+      background-color: #00c3ff; color: hsla(69, 80%, 66%, 0); padding: 12px 24px;
+      text-decoration: none; font-weight: bold; border-radius: 4px;
+    }
+    .prop{
+      text-align: center;
+      display: flex;
+    }
+     #testimonial-slider {
+      margin-top: 50px;
+      padding: 30px;
+      text-align: center;
+      background: #e0eafc;
+      border-left: 6px solid #6a89cc;
+      border-radius: 12px;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #2c3e50;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+    }
+
+    .testimonial-slider-mini {
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  padding: 0 10px;
+  margin: 28px auto;
+  max-width: 1900px;
+  min-width: 120px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-mini-header {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 8px 0 2px 0;
+  font-size: 1.08rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #0072ce 0%, #74ebd5 100%);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.09);
+  margin-bottom: 2px;
+  position: relative;
+  z-index: 2;
+}
+.testimonial-mini-slider-wrapper {
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+.testimonial-mini-card {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  left: 0; top: 0;
+  padding: 0 8px;
+  transition: opacity 0.4s;
+  background: rgba(255,255,255,0.97);
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+}
+.testimonial-mini-card.active {
+  display: flex;
+  animation: fadeInMini 0.6s;
+  position: absolute;
+}
+@keyframes fadeInMini {
+  from { opacity: 0; transform: translateY(15px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.testimonial-mini-text {
+  font-size: 1.25rem;
+  color: #0072ce;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
+}
+.testimonial-mini-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.89rem;
+  color: #333;
+  font-weight: bold;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.testimonial-mini-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #ffd200;
+  object-fit: cover;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+}
+.testimonial-mini-next-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: #0072ce;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  z-index: 3;
+}
+.testimonial-mini-next-btn:hover {
+  background: #ffd200;
+  color: #0072ce;
+  transform: scale(1.1);
+}
+@media (max-width: 500px) {
+  .testimonial-slider-mini {
+    max-width: 98vw;
+    min-width: 0;
+    padding: 0 4px;
+  }
+  .testimonial-mini-text {
+    max-width: 48%;
+    font-size: 0.85rem;
+  }
+  .testimonial-mini-meta {
+    font-size: 0.8rem;
+  }
+  .testimonial-mini-next-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+    right: 6px;
+    bottom: 6px;
+  }
+}
+
+
+.campus-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 20px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.campus-slider img {
+  width: 100%;
+  max-width: 1000px;
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+  transition: opacity 0.5s;
+}
+.campus-slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,92,169,0.7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s, color 0.2s;
+}
+.campus-prev { left: 18px; }
+.campus-next { right: 18px; }
+.campus-slider-btn:hover {
+  background: #ffd200;
+  color: #005ca9;
+}
+@media (max-width: 700px) {
+  .campus-slider img {
+    height: 180px;
+    max-width: 98vw;
+  }
+  .campus-slider-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.1rem;
+    left: 6px;
+    right: 6px;
+  }
+}
+
+.nav-btn {
+  background: #fff;
+  color: #005ca9;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-left: 8px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,92,169,0.08);
+  border: 2px solid #005ca9;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+.nav-btn:hover, .nav-btn:focus {
+  background: #ffd200;
+  color: #005ca9;
+  border-color: #ffd200;
+  box-shadow: 0 4px 16px rgba(0,92,169,0.13);
+}
+.login-btn {
+  margin-right: 0;
+ color: #fff; 
+ background:  #00a99b;
+}
+.register-btn {
+  background: #005ca9;
+  color: #fff;
+  border: 2px solid #ffd200;
+  margin-left: 4px;
+}
+.register-btn:hover, .register-btn:focus {
+  background: #ffd200;
+  color: #005ca9;
+  border-color: #005ca9;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  min-width: 170px;
+  box-shadow: 0 8px 24px rgba(0,92,169,0.13);
+  border-radius: 10px;
+  z-index: 10;
+  margin-top: 8px;
+  padding: 8px 0;
+}
+.dropdown-content a {
+  color: #005ca9;
+  padding: 10px 18px;
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.dropdown-content a:hover {
+  background: #e0eafc;
+  color: #0072ce;
+}
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+@media (max-width: 700px) {
+  .nav-btn {
+    padding: 6px 10px;
+    font-size: 0.98rem;
+    margin-left: 2px;
+  }
+  .dropdown-content {
+    min-width: 120px;
+    font-size: 0.95rem;
+  }
+}
+.damp{width: 1530px;
+height: fit-content;
+background-color: beige;
+margin-left: 20px;
+border-radius: 1%;
+margin-top: 1%;}
+.values{
+  color: violet;
+}
+  </style>
+</head>
+<body>
+    
+      <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quizapp.html">QuizApp</a></li>
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+      <li class="dropdown">
+      <a href="#" class="nav-btn login-btn">Login ▼</a>
+      <div class="dropdown-content">
+        <a href="login_admin.html">Admin Login</a>
+        <a href="teacher-login.html">Teacher Login</a>
+        <a href="student-log.html">Student Login</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="nav-btn register-btn">Register ▼</a>
+      <div class="dropdown-content">
+        <a href="admin_regist.html">Admin Register</a>
+        <a href="register_teacher.html">Teacher Register</a>
+        <a href="register-student.html">Student Register</a>
+      </div>
+    </li>
+    </ul>
+  </nav>
+
+
+
+  <section class="hero">
+
+    <h2>ECOLE SECONDAIRE MUDASOMWA</h2>
+    <p>•Ubumenyi  •Ubupfura  •Gukunda igihugu  •Gukorera kugihe</p>
+    <a href="admission.html" class="cta-btn">Apply Now</a>
+  </section>
+<section class="damp">
+  <section class="courses">
+    <h3>Explore Our Courses</h3>
+    <div class="course-list">
+      <div class="course"><h4 class="bold"><a href='gd layout.html'>O'Level</a></h4><p>🔥 Dream big, start now.</p></div>
+      <div class="course"><h4 class="bold"><a href='optionlist.html'>A'Level</a></h4><p>📚 Master now, lead later.</p></div>
+      <div class="course"><h4 class="bold"><a href='optionlist.html'>Priv-Candidate</a></h4><p>🧠 Own it. Prove it.</p></div>
+    </div>
+  </section>
+
+  <section class="learning">
+    <h3>Learning That Fits You</h3>
+    <ul><li><button onclick="showAlert()"> 💻 Online Programs </button></li><li><button onclick="howAlert()">🏫 On-Campus Classes </button></li><li ><button onclick="shwAlert()">🔄 Blended Learning</button></li></ul>
+  </section>
+
+  <section class="refer">
+    <h2> 🎁Invite a Friend</h2>
+        <p>Invite friends to join ES Mudasomwa and earn discounts or gifts!</p>
+        <form onsubmit="referFriend(event)">
+    <input type="email" id="friendEmail" placeholder="friend@example.com" required />
+    <br>
+    <button onclick="sendInvite()">Send Invite</button>
+    </form>
+  </section>
+
+  <section class="campus">
+  <h3>Our Campus</h3>
+  <div class="campus-slider">
+    <button class="campus-slider-btn campus-prev" onclick="prevCampusSlide()" aria-label="Previous photo">&#10094;</button>
+    <img id="campusSlide" src="trad4.jpeg" alt="Campus Preview" />
+    <button class="campus-slider-btn campus-next" onclick="nextCampusSlide()" aria-label="Next photo">&#10095;</button>
+  </div>
+  <p>Take a virtual tour and explore our learning spaces and school events.</p>
+</section>
+
+
+  <section class="prospectus">
+    <h3>📘 Our Prospectus</h3>
+    <p>Learn more about our programs, values, and campus life.</p>
+    <nav id="prop"><a href="prospectus.html"class="cta-btn">Download Now</nav></a>
+  </section>
+ 
+  <section class="faculty">
+    <h3>👩‍🏫 Meet Our Faculty</h3>
+    <div class="faculty-grid">
+      <div class="card">
+        <img src="hmm.png"width="80px" height="80px" alt="Mrs.Francoise" />
+        <h4>Mrs.Francoise AB.</h4>
+        <p>Head Master | 5+ years of experience</p>
+      </div>
+      <div class="card">
+        <img src=""width="80px" height="80px" alt="Mr.Yvens" />
+        <h4>Mr. Theophile RU.</h4>
+        <p>Dean Of Studies | 2+ years of experience</p>
+      </div>
+      <div class="card">
+        <img src="DOD.jpeg"width="80px" height="80px" alt="Mr.Yvens" />
+        <h4>Mrs. Vestine KA.</h4>
+        <p>Dean Of Discipline | 5+ years of experience</p>
+      </div>
+    </div>
+ 
+
+  
+   <section class="testimonial-slider-mini">
+  <div class="testimonial-mini-header">
+    <span>💬 What Our Student Says</span>
+  </div>
+  <div class="testimonial-mini-slider-wrapper">
+    <div class="testimonial-mini-card active">
+      <span class="testimonial-mini-text">"Every day feels like a new adventure—love this campus!"</span>
+      <span class="testimonial-mini-meta">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Talia" class="testimonial-mini-avatar">
+        Teta, Senior 6
+      </span>
+    </div>
+    <div class="testimonial-mini-card">
+      <span class="testimonial-mini-text">"The environment and facilities are inspiring!"</span>
+      <span class="testimonial-mini-meta">
+        <img src="lily.png" alt="Malik" class="testimonial-mini-avatar">
+        Liliane, Senior 6
+      </span>
+    </div>
+    <div class="testimonial-mini-card">
+      <span class="testimonial-mini-text">"It’s a place where dreams begin."</span>
+      <span class="testimonial-mini-meta">
+        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Chen" class="testimonial-mini-avatar">
+        Sam, Senior 6
+      </span>
+    </div>
+    <div class="testimonial-mini-card">
+      <span class="testimonial-mini-text">"Teachers here truly care about our success."</span>
+      <span class="testimonial-mini-meta">
+        <img src="olia.jpeg" alt="Amina" class="testimonial-mini-avatar">
+        Olia, Senior 6
+      </span>
+    </div>
+  </div>
+  <button class="testimonial-mini-next-btn" onclick="nextMiniTestimonial()" aria-label="Next testimonial">&#10095;</button>
+</section>
+  </section>
+
+<script>
+
+    async function fetchFaculty() {
+    try {
+      const response = await fetch('http://localhost:5000/api/faculty');
+      const faculty = await response.json();
+
+      const facultyGrid = document.querySelector('.faculty-grid');
+      facultyGrid.innerHTML = ''; // Clear existing content
+
+      faculty.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${member.photo}" width="80px" height="80px" alt="${member.name}" />
+          <h4>${member.name}</h4>
+          <p>${member.position} | ${member.experience} years of experience</p>
+        `;
+        facultyGrid.appendChild(card);
+      });
+    } catch (error) {
+      console.error('Error fetching faculty:', error);
+    }
+  }
+
+  
+  async function fetchTestimonials() {
+    try {
+      const response = await fetch('http://localhost:5000/api/testimonials');
+      const testimonials = await response.json();
+
+      const testimonialWrapper = document.querySelector('.testimonial-mini-slider-wrapper');
+      testimonialWrapper.innerHTML = ''; // Clear existing content
+
+      testimonials.forEach((testimonial, index) => {
+        const card = document.createElement('div');
+        card.className = `testimonial-mini-card ${index === 0 ? 'active' : ''}`;
+        card.innerHTML = `
+          <span class="testimonial-mini-text">"${testimonial.text}"</span>
+          <span class="testimonial-mini-meta">
+            <img src="${testimonial.avatar}" alt="${testimonial.author}" class="testimonial-mini-avatar">
+            ${testimonial.author}, ${testimonial.role}
+          </span>
+        `;
+        testimonialWrapper.appendChild(card);
+      });
+    } catch (error) {
+      console.error('Error fetching testimonials:', error);
+    }
+  }
+
+  // Call fetchTestimonials when the page loads
+  document.addEventListener('DOMContentLoaded', fetchTestimonials);
+
+
+  // Call fetchFaculty when the page loads
+  document.addEventListener('DOMContentLoaded', fetchFaculty);
+
+  
+  async function fetchCampusImages() {
+    try {
+      const response = await fetch('http://localhost:5000/api/gallery');
+      const images = await response.json();
+
+      const campusPhotos = images.map(image => image.url); // Extract URLs
+      let campusIndex = 0;
+
+      function showCampusSlide(idx) {
+        const campusSlide = document.getElementById('campusSlide');
+        campusSlide.style.opacity = 0.4;
+        setTimeout(() => {
+          campusSlide.src = campusPhotos[idx];
+          campusSlide.style.opacity = 1;
+        }, 200);
+      }
+
+      function nextCampusSlide() {
+        campusIndex = (campusIndex + 1) % campusPhotos.length;
+        showCampusSlide(campusIndex);
+      }
+
+      function prevCampusSlide() {
+        campusIndex = (campusIndex - 1 + campusPhotos.length) % campusPhotos.length;
+        showCampusSlide(campusIndex);
+      }
+
+      // Auto-slide every 5 seconds
+      setInterval(nextCampusSlide, 5000);
+
+      // Initialize first photo
+      showCampusSlide(campusIndex);
+    } catch (error) {
+      console.error('Error fetching campus images:', error);
+    }
+  }
+
+  // Call fetchCampusImages when the page loads
+  document.addEventListener('DOMContentLoaded', fetchCampusImages);
+
+
+  async function sendInvite(event) {
+    event.preventDefault();
+    const email = document.getElementById('friendEmail').value;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/invite', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('Invitation sent successfully!');
+      } else {
+        alert(data.message || 'Failed to send invitation');
+      }
+    } catch (error) {
+      console.error('Error sending invitation:', error);
+    }
+  }
+
+  
+  async function fetchCourses() {
+    try {
+      const response = await fetch('http://localhost:5000/api/courses');
+      const courses = await response.json();
+
+      const courseList = document.querySelector('.course-list');
+      courseList.innerHTML = ''; // Clear existing content
+
+      courses.forEach(course => {
+        const courseDiv = document.createElement('div');
+        courseDiv.className = 'course';
+        courseDiv.innerHTML = `
+          <h4 class="bold"><a href="${course.link}">${course.name}</a></h4>
+          <p>${course.description}</p>
+        `;
+        courseList.appendChild(courseDiv);
+      });
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+    }
+  }
+
+  // Call fetchCourses when the page loads
+
+
+  
+  document.addEventListener('DOMContentLoaded', fetchCourses);
+
+
+
+
+ function showAlert() {
+      alert("📎 The online program will be available soon on our campus!");
+    }
+
+    function howAlert() {
+      alert("📎 Visit our Admission portal and fill all required to study on our campus classes!");
+    }
+
+    function shwAlert() {
+      alert("📎 This system is not yet opened in our school!");
+    }
+const miniCards = document.querySelectorAll('.testimonial-mini-card');
+let miniIndex = 0;
+
+function showMiniTestimonial(idx) {
+  miniCards.forEach((card, i) => {
+    card.classList.toggle('active', i === idx);
+  });
+}
+
+function nextMiniTestimonial() {
+  miniIndex = (miniIndex + 1) % miniCards.length;
+  showMiniTestimonial(miniIndex);
+}
+
+// Change every 5 seconds
+setInterval(() => {
+  nextMiniTestimonial();
+},5000);
+    function sendInvite() {
+      const email = document.getElementById('friendEmail').value;
+      const subject = encodeURIComponent("Check out this website!");
+      const body = encodeURIComponent("Hey! This' ES Mudasomwa website. Have a look:\n\nhttps://www.example.com\n\nLet me know what you think!");
+
+      if (email) {
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+      } else {
+        alert("Please enter a valid email address.");
+      }
+    }
+
+
+const campusPhotos = [
+  "event1.jpg",
+  "event2.jpeg",
+  "event3.jpg",
+  "event4.jpg",
+  "event5.jpg",
+  "trad1.jpeg",
+  "trad2.jpeg",
+  "trad.jpeg",
+  "trad4.jpeg",
+  "trad5.jpeg",
+  "trad6.jpeg",
+  "trad7.jpeg",
+];
+let campusIndex = 0;
+const campusSlide = document.getElementById('campusSlide');
+
+function showCampusSlide(idx) {
+  campusSlide.style.opacity = 0.4;
+  setTimeout(() => {
+    campusSlide.src = campusPhotos[idx];
+    campusSlide.style.opacity = 1;
+  }, 200);
+}
+
+function nextCampusSlide() {
+  campusIndex = (campusIndex + 1) % campusPhotos.length;
+  showCampusSlide(campusIndex);
+}
+
+function prevCampusSlide() {
+  campusIndex = (campusIndex - 1 + campusPhotos.length) % campusPhotos.length;
+  showCampusSlide(campusIndex);
+}
+
+// Auto-slide every 5 seconds
+setInterval(nextCampusSlide, 5000);
+
+// Initialize first photo
+showCampusSlide(campusIndex);
+
+  </script>
+
+  <footer>
+    <p>&copy;2025 ES Mudasomwa | Public School.</p>
+    
+  </footer>
+
+  <!--

@@ -1,0 +1,114 @@
+<!-- Add these buttons to your navigation bar, after the last <li> in .nav-links -->
+<nav>
+  <h1 class="logo">ES Mudasomwa</h1>
+  <ul class="nav-links">
+    <li><a href="homepage.html">Home</a></li>
+    <li><a href="coursesect.html">Courses</a></li>
+    <li><a href="admission.html">Admissions</a></li>
+    <li><a href="campus3.html">Campus</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="about.html">About</a></li>
+    <!-- Login/Register dropdown START -->
+    <li class="dropdown">
+      <a href="#" class="nav-btn login-btn">Login ▼</a>
+      <div class="dropdown-content">
+        <a href="login_admin.html">Admin Login</a>
+        <a href="login_teacher.html">Teacher Login</a>
+        <a href="login_student.html">Student Login</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="nav-btn register-btn">Register ▼</a>
+      <div class="dropdown-content">
+        <a href="register_admin.html">Admin Register</a>
+        <a href="register_teacher.html">Teacher Register</a>
+        <a href="register_student.html">Student Register</a>
+      </div>
+    </li>
+    <!-- Login/Register dropdown END -->
+  </ul>
+</nav>
+
+<style>
+/* ...existing nav styles... */
+.nav-btn {
+  background: #fff;
+  color: #005ca9;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-left: 8px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,92,169,0.08);
+  border: 2px solid #005ca9;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+.nav-btn:hover, .nav-btn:focus {
+  background: #ffd200;
+  color: #005ca9;
+  border-color: #ffd200;
+  box-shadow: 0 4px 16px rgba(0,92,169,0.13);
+}
+.login-btn {
+  margin-right: 0;
+}
+.register-btn {
+  background: #005ca9;
+  color: #fff;
+  border: 2px solid #ffd200;
+  margin-left: 4px;
+}
+.register-btn:hover, .register-btn:focus {
+  background: #ffd200;
+  color: #005ca9;
+  border-color: #005ca9;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  min-width: 170px;
+  box-shadow: 0 8px 24px rgba(0,92,169,0.13);
+  border-radius: 10px;
+  z-index: 10;
+  margin-top: 8px;
+  padding: 8px 0;
+}
+.dropdown-content a {
+  color: #005ca9;
+  padding: 10px 18px;
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.dropdown-content a:hover {
+  background: #e0eafc;
+  color: #0072ce;
+}
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+@media (max-width: 700px) {
+  .nav-btn {
+    padding: 6px 10px;
+    font-size: 0.98rem;
+    margin-left: 2px;
+  }
+  .dropdown-content {
+    min-width: 120px;
+    font-size: 0.95rem;
+  }
+}
+</style>

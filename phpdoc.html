@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      padding: 40px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #005ca9;
+    }
+
+    form {
+      max-width: 850px;
+      margin: auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.07);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      color: #0072ce;
+      margin-bottom: 8px;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #f0f8ff;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #f0f8ff;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #0072ce;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005ca9;
+    }
+
+    .status {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+ nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;display: -webkit-flex;
+    }
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex;float: right;justify-content: right; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+     label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+     <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+     
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+  <h1>📤 Upload Admission Documents</h1>
+
+  <form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label>School Report:</label>
+      <input type="file" name="doc2" />
+    </div>
+
+ <div class="form-group">
+      <label>Parent's Phone Number:</label>
+      <input type="text"name="id" required width="400px" />
+    </div>
+
+    <div class="form-group">
+      <label>Passport-size Photograph:</label>
+      <input type="file" name="doc3" />
+    </div>
+
+    <div class="form-group">
+      <label>Letter of Motivation:</label>
+      <input type="file" name="doc4" />
+    </div>
+
+    <div class="form-group">
+      <label>School where you come from:</label>
+      <input type="text" name="doc5" />
+    </div>
+
+    <div class="form-group">
+      <label>Proof of Payment:</label>
+      <input type="file" name="doc6" required width="400px" />
+    </div>
+
+    <div class="form-group">
+      <label> Test Results:</label>
+      <input type="file" name="doc7" />
+    </div>
+
+    <button type="submit">Submit All Documents</button>
+  </form>
+  <footer>
+    <p>&copy;2025 ES Mudasomwa | Documents</p>
+    
+  </footer>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Gallery | ES Mudasomwa</title>
+  <style>
+    /* General Gallery Styles */
+    .oshakul-gallery {
+      background: #181818;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+      padding: 48px 4% 38px 4%;
+      margin: 48px auto 40px auto;
+      max-width: 1200px;
+      text-align: center;
+    }
+    .oshakul-title {
+      color: #ffd200;
+      font-size: 2.2rem;
+      margin-bottom: 36px;
+      letter-spacing: 1px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .oshakul-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      justify-items: center;
+    }
+    .oshakul-film-card {
+      background: #232323;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16);
+      overflow: hidden;
+      transition: transform 0.22s, box-shadow 0.22s;
+      cursor: pointer;
+      width: 100%;
+      max-width: 260px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .oshakul-film-thumb {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      overflow: hidden;
+    }
+    .oshakul-film-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+    }
+    .oshakul-film-year {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      background: rgba(255, 210, 0, 0.92);
+      color: #181818;
+      font-weight: bold;
+      font-size: 1.02rem;
+      padding: 4px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
+    }
+    .oshakul-film-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+    }
+    .oshakul-film-card:hover img {
+      transform: scale(1.08);
+    }
+    .oshakul-film-info {
+      padding: 18px 14px 14px 14px;
+      text-align: left;
+    }
+    .oshakul-film-info h4 {
+      margin: 0 0 6px 0;
+      color: #ffd200;
+      font-size: 1.13rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    .oshakul-film-info p {
+      margin: 0;
+      color: #fff;
+      font-size: 1.01rem;
+      opacity: 0.85;
+    }
+
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+    .lightbox .prev,
+    .lightbox .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 50%;
+    }
+    .lightbox .prev {
+      left: 20px;
+    }
+    .lightbox .next {
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Campus Gallery -->
+  <section class="oshakul-gallery" id="campus-gallery">
+    <h3 class="oshakul-title">🏫 Campus Gallery</h3>
+    <div class="oshakul-gallery-grid">
+      <div class="oshakul-film-card" onclick="openLightbox(0)">
+        <div class="oshakul-film-thumb">
+          <img src="amashuri.png" alt="Main Block">
+          <span class="oshakul-film-year">Main Block</span>
+        </div>
+        <div class="oshakul-film-info">
+          <h4>Main Building</h4>
+          <p>Academic Center</p>
+        </div>
+      </div>
+      <div class="oshakul-film-card" onclick="openLightbox(1)">
+        <div class="oshakul-film-thumb">
+          <img src="ubusitani.png" alt="Science Lab">
+          <span class="oshakul-film-year">Science Lab</span>
+        </div>
+        <div class="oshakul-film-info">
+          <h4>Science Laboratory</h4>
+          <p>Experiments & Research</p>
+        </div>
+      </div>
+      <div class="oshakul-film-card" onclick="openLightbox(2)">
+        <div class="oshakul-film-thumb">
+          <img src="ubusitani.png" alt="Library">
+          <span class="oshakul-film-year">Library</span>
+        </div>
+        <div class="oshakul-film-info">
+          <h4>Library</h4>
+          <p>Study & Resources</p>
+        </div>
+      </div>
+      <div class="oshakul-film-card" onclick="openLightbox(3)">
+        <div class="oshakul-film-thumb">
+          <img src="GATE.png" alt="Dormitory">
+          <span class="oshakul-film-year">Dormitory</span>
+        </div>
+        <div class="oshakul-film-info">
+          <h4>Student Dormitory</h4>
+          <p>Accommodation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+    <img id="lightboxImage" src="" alt="Enlarged Image">
+    <span class="next" onclick="changeImage(1)">&#10095;</span>
+  </div>
+
+  <script>
+    const images = [
+      "amashuri.png",
+      "ubusitani.png",
+      "ubusitani.png",
+      "GATE.png"
+    ];
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightboxImage");
+      lightboxImage.src = images[currentIndex];
+      lightbox.style.display = "flex";
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById("lightbox");
+      lightbox.style.display = "none";
+    }
+
+    function changeImage(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+      } else if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
+      const lightboxImage = document.getElementById("lightboxImage");
+      lightboxImage.src = images[currentIndex];
+    }
+  </script>
+</body>
+</html>

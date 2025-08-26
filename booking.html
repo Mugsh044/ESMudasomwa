@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:  linear-gradient(135deg, #74ebd5, #9face6);
+      padding: 40px;
+    }
+
+    .booking-form {
+      max-width: 500px;
+      margin: auto;
+     background: white; 
+      padding: 60px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .booking-form h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .booking-form label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    .booking-form input,
+    .booking-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .booking-form button {
+      margin-top: 20px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .booking-form button:hover {
+      background-color: #219150;
+    }
+
+    .message {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+     
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+  <div class="booking-form">
+    <h2>Book Your Campus Visit</h2>
+    <form id="guestBookingForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required />
+
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" required />
+
+      <label for="message">Purpose of Visit</label>
+      <textarea id="message" rows="4" required></textarea>
+
+      <button type="submit">Submit Booking</button>
+    </form>
+    <div id="confirmation" class="message"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('guestBookingForm');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Collect data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const date = document.getElementById('date').value;
+      const message = document.getElementById('message').value;
+
+      // Here you’d send data to server/API - for now, show confirmation
+      confirmation.textContent = `Thanks, ${name}! Your visit on ${date} is booked.`;
+
+      form.reset(); // clear form
+    });
+  </script>
+   <footer>
+    <p>&copy;2025 ES Mudasomwa | Booking Form</p>
+    
+  </footer>
+</body>
+</html>

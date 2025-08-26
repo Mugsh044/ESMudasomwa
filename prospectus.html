@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ES Mudasomwa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: #333;
+    }
+
+    header {
+      background-color: #0097a7;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #00796b;
+      margin-top: 0;
+    }
+
+    button {
+      background-color: #009688;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00796b;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #eceff1;
+      font-size: 0.9rem;
+      color: #555;
+    }
+     nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;
+      width: 1450px;
+    }
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+   
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+  <header>
+    <h1>ES Mudasomwa Prospectus</h1>
+    <p>Your journey begins here 🚀</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>📘 About Us</h2>
+      <p>Es Mudasomwa is dedicated to inspiring lifelong learners through world-class education, nurturing creativity and integrity.</p>
+    </div>
+
+    <div class="card">
+      <h2>📚 Courses Offered</h2>
+      <ul>
+        <li>Science  </li>
+        <li>Technology</li>
+        <li>Business & Entrepreneurship</li>
+        <li>After class cores</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🎓 Admissions</h2>
+      <p>Enrollment opens in August. Requirements include previous academic records, entrance examination, and interview.</p>
+    </div>
+
+    <div class="card">
+      <h2>🏫 Facilities</h2>
+      <p>Modern classrooms, digital labs, a vibrant library, and creative hubs make learning fun and effective.</p>
+    </div>
+
+    <div class="card">
+      <h2>🎉 Student Life</h2>
+      <p>Students enjoy music, debate clubs, sports, volunteer programs, and leadership workshops for holistic development.</p>
+    </div>
+
+    <button onclick="showAlert()">Download Full Prospectus</button>
+  </section>
+
+ <footer>
+    <p>&copy;2025 ES Mudasomwa | Prospectus</p>
+    
+  </footer>
+
+  <script>
+    function showAlert() {
+      alert("📎 The full prospectus will be available soon on our campus portal!");
+    }
+  </script>
+
+</body>
+</html>

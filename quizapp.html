@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App | ES Mudasomwa</title>
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* Login Styles */
+    .login-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 300px;
+      display: none; /* Hidden by default */
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #005ca9;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .login-container button {
+      background: #0072ce;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .login-container button:hover {
+      background: #005ca9;
+    }
+
+    /* Quiz Styles */
+    .quiz-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 600px;
+      display: none; /* Hidden by default */
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+    .quiz-container h2 {
+      color: #005ca9;
+      margin-bottom: 20px;
+    }
+    .quiz-question {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .quiz-options {
+      margin-bottom: 20px;
+    }
+    .quiz-options button {
+      background: #0072ce;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px 0;
+      width: 100%;
+    }
+    .quiz-options button:hover {
+      background: #005ca9;
+    }
+    .quiz-actions {
+      margin-top: 20px;
+    }
+    .quiz-btn {
+      background: #0072ce;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .quiz-btn:hover {
+      background: #005ca9;
+    }
+    .quiz-score {
+      font-size: 1.2rem;
+      color: #219150;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #d32f2f;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .delete-btn:hover {
+      background: #b71c1c;
+    }
+
+    /* Admin/Teacher Panel */
+    .admin-panel {
+      display: none;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 600px;
+    }
+    .admin-panel h3 {
+      color: #005ca9;
+      margin-bottom: 20px;
+    }
+    .admin-panel textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    .admin-panel button {
+      background: #0072ce;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .admin-panel button:hover {
+      background: #005ca9;
+    }
+    .marks-container {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .marks-container h4 {
+      color: #005ca9;
+      margin-bottom: 10px;
+    }
+    .marks-container ul {
+      list-style: none;
+      padding: 0;
+    }
+    .marks-container ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Section -->
+  <div class="login-container" id="loginContainer">
+    <h2>Login</h2>
+    <form onsubmit="handleLogin(event)">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <!-- Quiz Section -->
+  <div class="quiz-container" id="quizContainer">
+    <h2 id="quizGreeting">Quiz App</h2>
+    <div id="quizQuestionsContainer"></div>
+    <div class="quiz-actions">
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()">Submit</button>
+    </div>
+    <div class="quiz-score" id="quizScore"></div>
+  </div>
+
+  <!-- Admin/Teacher Panel -->
+  <div class="admin-panel" id="adminPanel">
+    <h3>Admin/Teacher Panel</h3>
+    <textarea id="newQuestion" placeholder="Enter a new question"></textarea>
+    <button onclick="addQuestion()">Add Question</button>
+    <h4>All Questions:</h4>
+    <ul id="questionList"></ul>
+    <div class="marks-container">
+      <h4>All Students' Marks:</h4>
+      <ul id="marksList"></ul>
+    </div>
+  </div>
+
+  <script>
+    // Predefined Users
+    const users = [
+      { username: "admin", password: "admin123", role: "Admin" },
+      { username: "teacher1", password: "teacher123", role: "Teacher" },
+      { username: "student1", password: "student123", role: "Student" }
+    ];
+
+    // Quiz Questions
+    let quizQuestions = [
+      {
+        question: "What does ES Mudasomwa stand for?",
+        options: [
+          "Ecole Secondaire Mudasomwa",
+          "Ecole Superieure Mudasomwa",
+          "Ecole Scolaire Mudasomwa",
+          "Ecole Secondaire Musanze"
+        ],
+        answer: 0
+      }
+    ];
+
+    // Marks Data
+    const marks = [
+      { student: "student1", score: 0 }
+    ];
+
+    let userRole = null;
+
+    // Login Logic
+    function handleLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Validate user credentials
+      const user = users.find(u => u.username === username && u.password === password);
+      if (user) {
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('userRole', user.role);
+        userRole = user.role;
+        alert(`Login successful! Welcome, ${user.role}.`);
+        document.getElementById('loginContainer').style.display = 'none';
+
+        if (user.role === "Admin" || user.role === "Teacher") {
+          document.getElementById('adminPanel').style.display = 'block';
+          renderAdminPanel();
+        } else {
+          document.getElementById('quizContainer').style.display = 'block';
+          renderQuiz();
+        }
+      } else {
+        alert('Invalid credentials. Please try again.');
+      }
+    }
+
+    // Render Quiz
+    function renderQuiz() {
+      const quizContainer = document.getElementById('quizQuestionsContainer');
+      quizContainer.innerHTML = '';
+      quizQuestions.forEach((q, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'quiz-question';
+        questionDiv.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'quiz-options';
+        q.options.forEach((opt, idx) => {
+          const optionBtn = document.createElement('button');
+          optionBtn.textContent = opt;
+          optionBtn.onclick = () => selectOption(index, idx, optionBtn);
+          optionsDiv.appendChild(optionBtn);
+        });
+        questionDiv.appendChild(optionsDiv);
+
+        // Add delete button for Admin/Teacher
+        if (userRole === "Admin" || userRole === "Teacher") {
+          const deleteBtn = document.createElement('button');
+          deleteBtn.className = 'delete-btn';
+          deleteBtn.textContent = 'Delete';
+          deleteBtn.onclick = () => deleteQuestion(index);
+          questionDiv.appendChild(deleteBtn);
+        }
+
+        quizContainer.appendChild(questionDiv);
+      });
+    }
+
+    // Render Admin Panel
+    function renderAdminPanel() {
+      const questionList = document.getElementById('questionList');
+      questionList.innerHTML = '';
+      quizQuestions.forEach((q, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${index + 1}. ${q.question}`;
+        questionList.appendChild(li);
+      });
+
+      const marksList = document.getElementById('marksList');
+      marksList.innerHTML = '';
+      marks.forEach(mark => {
+        const li = document.createElement('li');
+        li.textContent = `${mark.student}: ${mark.score} points`;
+        marksList.appendChild(li);
+      });
+    }
+
+    // Add Question (Admin/Teacher)
+    function addQuestion() {
+      const newQuestionText = document.getElementById('newQuestion').value;
+      if (!newQuestionText) {
+        alert("Please enter a question.");
+        return;
+      }
+      quizQuestions.push({
+        question: newQuestionText,
+        options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+        answer: 0
+      });
+      document.getElementById('newQuestion').value = '';
+      renderAdminPanel();
+      alert("Question added successfully!");
+    }
+
+    // Delete Question
+    function deleteQuestion(index) {
+      if (confirm("Are you sure you want to delete this question?")) {
+        quizQuestions.splice(index, 1);
+        renderQuiz();
+        renderAdminPanel();
+        alert("Question deleted successfully!");
+      }
+    }
+
+    // Select Option
+    function selectOption(questionIndex, optionIndex, btn) {
+      const q = quizQuestions[questionIndex];
+      const options = btn.parentElement.querySelectorAll('button');
+      options.forEach(optionBtn => optionBtn.disabled = true);
+      if (optionIndex === q.answer) {
+        btn.style.backgroundColor = '#219150'; // Correct
+      } else {
+        btn.style.backgroundColor = '#d32f2f'; // Incorrect
+        options[q.answer].style.backgroundColor = '#219150'; // Highlight correct answer
+      }
+    }
+
+    // Submit Quiz
+    function submitQuiz() {
+      let score = 0;
+      quizQuestions.forEach((q, index) => {
+        const options = document.querySelectorAll(`.quiz-options:nth-child(${index + 1}) button`);
+        options.forEach((btn, idx) => {
+          if (btn.style.backgroundColor === 'rgb(33, 145, 80)' && idx === q.answer) {
+            score++;
+          }
+        });
+      });
+      document.getElementById('quizScore').textContent = `Your Score: ${score} / ${quizQuestions.length}`;
+      alert('Quiz submitted successfully!');
+
+      // Update marks for the logged-in student
+      const username = users.find(u => u.role === "Student").username;
+      const studentMark = marks.find(mark => mark.student === username);
+      if (studentMark) {
+        studentMark.score = score;
+      } else {
+        marks.push({ student: username, score });
+      }
+    }
+
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    userRole = localStorage.getItem('userRole');
+    if (isLoggedIn && userRole) {
+      document.getElementById('loginContainer').style.display = 'none';
+      if (userRole === "Admin" || userRole === "Teacher") {
+        document.getElementById('adminPanel').style.display = 'block';
+        renderAdminPanel();
+      } else {
+        document.getElementById('quizContainer').style.display = 'block';
+        renderQuiz();
+      }
+    } else {
+      document.getElementById('loginContainer').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

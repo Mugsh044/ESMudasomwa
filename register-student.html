@@ -1,0 +1,131 @@
+<!-- Save as register_student.html or add to your project -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Registration | ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .register-student-form {
+      background: #fff;
+      padding: 38px 32px 28px 32px;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      max-width: 420px;
+      width: 100%;
+      margin: 40px 0;
+    }
+    .register-student-form h2 {
+      color: #005ca9;
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 2rem;
+    }
+    .register-student-form label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    .register-student-form input, .register-student-form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .register-student-form button {
+      width: 100%;
+      background: linear-gradient(90deg, #0072ce 0%, #ffd200 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0;
+      font-size: 1.08rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, color 0.2s;
+    }
+    .register-student-form button:hover {
+      background: linear-gradient(90deg, #ffd200 0%, #0072ce 100%);
+      color: #0072ce;
+    }
+    .register-student-form .success-message {
+      color: #219150;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.08rem;
+    }
+    .register-student-form .error-message {
+      color: #d32f2f;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.08rem;
+    }
+  </style>
+</head>
+<body>
+  <form class="register-student-form" id="studentRegisterForm" autocomplete="off">
+    <h2>Student Registration</h2>
+    <label for="studentName">Full Name</label>
+    <input type="text" id="studentName" name="studentName" required />
+
+    <label for="studentEmail">Email Address</label>
+    <input type="email" id="studentEmail" name="studentEmail" required />
+
+    <label for="studentClass">Class</label>
+    <select id="studentClass" name="studentClass" required>
+      <option value="">--Select Class--</option>
+      <option value="Senior 1">Senior 1</option>
+      <option value="Senior 2">Senior 2</option>
+      <option value="Senior 3">Senior 3</option>
+      <option value="Senior 4">Senior 4</option>
+      <option value="Senior 5">Senior 5</option>
+      <option value="Senior 6">Senior 6</option>
+    </select>
+
+    <label for="studentUsername">Username</label>
+    <input type="text" id="studentUsername" name="studentUsername" required />
+
+    <label for="studentPassword">Password</label>
+    <input type="password" id="studentPassword" name="studentPassword" required minlength="6" />
+
+    <label for="studentConfirmPassword">Confirm Password</label>
+    <input type="password" id="studentConfirmPassword" name="studentConfirmPassword" required minlength="6" />
+
+    <button type="submit">Register as Student</button>
+    <div class="success-message" id="studentSuccessMsg"></div>
+    <div class="error-message" id="studentErrorMsg"></div>
+  </form>
+
+  <script>
+    document.getElementById('studentRegisterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pass = document.getElementById('studentPassword').value;
+      const confirm = document.getElementById('studentConfirmPassword').value;
+      const successMsg = document.getElementById('studentSuccessMsg');
+      const errorMsg = document.getElementById('studentErrorMsg');
+      successMsg.textContent = "";
+      errorMsg.textContent = "";
+      if (pass !== confirm) {
+        errorMsg.textContent = "Passwords do not match!";
+        return;
+      }
+      // Here you would send the data to your backend for real registration
+      successMsg.textContent = "Registration successful! (Demo only)";
+      this.reset();
+    });

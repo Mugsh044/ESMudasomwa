@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      margin: 0;
+      padding: 40px;
+      color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #005ca9;
+      margin-bottom: 40px;
+    }
+
+    .category {
+      background: white;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      max-width: 900px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .category:hover {
+      transform: scale(1.02);
+    }
+
+    .category h2 {
+      cursor: pointer;
+      margin: 0;
+      font-size: 1.5rem;
+      color: #0072ce;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .courses {
+      display: none;
+      margin-top: 20px;
+      padding-left: 15px;
+    }
+
+    .courses a {
+      display: block;
+      margin: 8px 0;
+      color: #005ca9;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .courses a:hover {
+      text-decoration: underline;
+      color: #003b75;
+    }
+
+    .arrow {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .expanded .arrow {
+      transform: rotate(90deg);
+    }
+    nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;
+    }
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+    
+  </style>
+</head>
+<body>
+       <nav>
+    <h2 class="logo">ES Mudasomwa</h2>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+   
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+
+  <h1> Explore Your Grade Level</h1>
+
+  <div class="category" onclick="toggleCourses(this)">
+    <h2><a href="pcbcourses.html"> Senior Four <span class="arrow">▶</span></a></h2>
+    
+    </div>
+  
+
+  <div class="category" onclick="toggleCourses(this)">
+    <h2><a href="pcbcourses1.html"> Senior Five <span class="arrow">▶</span></a></h2>
+    
+  </div>
+
+  <div class="category" onclick="toggleCourses(this)">
+    <h2><a href="pcbcourses2.html"> Senior Six <span class="arrow">▶</span></a></h2>
+    </div>
+
+  <script>
+    function toggleCourses(categoryDiv) {
+      const arrow = categoryDiv.querySelector(".arrow");
+      const courses = categoryDiv.querySelector(".courses");
+      const isExpanded = categoryDiv.classList.contains("expanded");
+      categoryDiv.classList.toggle("expanded");
+      courses.style.display = isExpanded ? "none" : "block";
+    }
+  </script>
+<footer>
+    <p>&copy;2025 ES Mudasomwa | Grade Level</p>
+    
+  </footer>
+</body>
+</html>

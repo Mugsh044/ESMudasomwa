@@ -1,0 +1,140 @@
+
+
+  <title>ES Mudasomwa</title>
+
+<style>
+  body{background-color: #f4f7fa;}
+.contact-section {
+  background:  linear-gradient(135deg, #74ebd5, #9face6);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+  padding: 44px 6% 36px 6%;
+  margin: 48px auto 40px auto;
+  max-width: 700px;
+  text-align: center;
+}
+.contact-section h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.contact-section p,
+.contact-details p {
+  color: #fffbe7;
+  font-size: 1.08rem;
+  margin-bottom: 10px;
+}
+.contact-details {
+  margin-bottom: 18px;
+}
+.contact-details a {
+  color: #fff;
+  text-decoration: underline;
+}
+.contact-form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px 18px 16px 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  display: inline-block;
+  max-width: 400px;
+  width: 100%;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+.contact-form button {
+  background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 1.08rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.contact-form button:hover {
+  background: linear-gradient(90deg, #ffd200 0%, #f7971e 100%);
+  color: #f57c00;
+}
+.contact-message {
+  margin-top: 10px;
+  color: #219150;
+  font-style: italic;
+  min-height: 22px;
+}
+ nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;
+    }
+
+
+   
+
+
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+</style>
+</head>
+
+  <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+     
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+<!-- Place this where you want the Contact section, e.g., after the location section -->
+<section class="contact-section">
+  <h3>📞 Contact Us</h3>
+  <p>
+    Have questions or want to get in touch? Reach out to us!
+  </p>
+  <div class="contact-details">
+    <p><strong>Address:</strong> Ecole Secondaire Mudasomwa, Nyamagabe District, Rwanda</p>
+    <p><strong>Phone:</strong> <a href="tel:+250788123456">+250 788 123 456</a></p>
+    <p><strong>Email:</strong> <a href="mailto:info@mudasomwa.edu.rw">info@mudasomwa.edu.rw</a></p>
+  </div>
+  <form class="contact-form" autocomplete="off">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+    <p class="contact-message" id="contactMessage"></p>
+  </form>
+</section>
+ <footer>
+    <p>&copy;2025 ES Mudasomwa | Contact section</p>
+    
+  </footer>
+
+<!-- Add this CSS to your <style> tag in <head> -->
+
+
+<!-- Add this JS before </body> or in your script section -->
+<script>
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('contactMessage').textContent = "Thank you for contacting us! We'll get back to you soon.";
+  this.reset();
+});

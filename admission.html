@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: #333;
+    }
+
+    section#admission {
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 3rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 300px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      color: #0077cc;
+    }
+
+    ul, ol {
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 12px 20px;
+      background-color: #0077cc;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #dates {
+      margin-top: 20px;
+      text-align: left;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #dates ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    #dates li {
+      margin: 8px 0;
+      font-size: 1.1rem;
+    }
+ nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;}
+       .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+  </style>
+</head>
+<body>
+     <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+    
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+
+  <section id="admission">
+    <div class="container">
+      <h2>🎓 Admission</h2>
+      <p>Begin your journey with us—explore programs, apply, and unlock your potential.</p>
+
+      <div class="card-grid">
+        <div class="card">
+         <a href="eligibility.html"> <h3>📋 Eligibility</h3></a>
+          <ul>
+            <li>Passed Primary 6 national Exam</li>
+            <li>Passed O'Level national Exam</li>
+            <li>Disciplined</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <a href="applicationForm.html"><h3>📝 Application Steps</h3></a>
+          <ol>
+            <li>Fill out online form</li>
+            <li>Upload documents</li>
+            <li>Pay application fee</li>
+          </ol>
+        </div>
+
+        <div class="card">
+          <a href="phpdoc.html"><h3>📑 Documents</h3></a>
+          <ul>
+            <li>National ID / Passport</li>
+            <li>Transcripts & Certificates</li>
+            <li>Letter of Motivation</li>
+          </ul>
+        </div>
+      </div>
+
+      <button id="toggleBtn">Show Important Dates 📅</button>
+
+      <div id="dates" class="hidden">
+        <h3>🗓️ Important Dates</h3>
+        <ul>
+          <li>Applications Open: August 1, 2025</li>
+          <li>Application Deadline: October 15, 2025</li>
+          <li>Interviews: October 20–30, 2025</li>
+          <li>Results Announced: November 10, 2025</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Show/Hide Dates
+    document.getElementById("toggleBtn").addEventListener("click", function() {
+      const dates = document.getElementById("dates");
+      if (dates.classList.contains("hidden")) {
+        dates.classList.remove("hidden");
+        this.textContent = "Hide Important Dates ❌";
+      } else {
+        dates.classList.add("hidden");
+        this.textContent = "Show Important Dates 📅";
+      }
+    });
+  </script>
+   <footer>
+    <p>&copy;2025 ES Mudasomwa | Admission</p>
+    
+  </footer>
+
+
+</body>
+</html>

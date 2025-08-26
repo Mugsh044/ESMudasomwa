@@ -1,0 +1,126 @@
+<!-- Save as register_teacher.html or add to your project -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Registration | ES Mudasomwa</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .register-teacher-form {
+      background: #fff;
+      padding: 38px 32px 28px 32px;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      max-width: 420px;
+      width: 100%;
+      margin: 40px 0;
+    }
+    .register-teacher-form h2 {
+      color: #005ca9;
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 2rem;
+    }
+    .register-teacher-form label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    .register-teacher-form input, .register-teacher-form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .register-teacher-form button {
+      width: 100%;
+      background: linear-gradient(90deg, #0072ce 0%, #ffd200 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0;
+      font-size: 1.08rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, color 0.2s;
+    }
+    .register-teacher-form button:hover {
+      background: linear-gradient(90deg, #ffd200 0%, #0072ce 100%);
+      color: #0072ce;
+    }
+    .register-teacher-form .success-message {
+      color: #219150;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.08rem;
+    }
+    .register-teacher-form .error-message {
+      color: #d32f2f;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.08rem;
+    }
+  </style>
+</head>
+<body>
+  <form class="register-teacher-form" id="teacherRegisterForm" autocomplete="off">
+    <h2>Teacher Registration</h2>
+    <label for="teacherName">Full Name</label>
+    <input type="text" id="teacherName" name="teacherName" required />
+
+    <label for="teacherEmail">Email Address</label>
+    <input type="email" id="teacherEmail" name="teacherEmail" required />
+
+    <label for="teacherSubject">Subject(s) Taught</label>
+    <input type="text" id="teacherSubject" name="teacherSubject" placeholder="e.g. Mathematics, English" required />
+
+    <label for="teacherUsername">Username</label>
+    <input type="text" id="teacherUsername" name="teacherUsername" required />
+
+    <label for="teacherPassword">Password</label>
+    <input type="password" id="teacherPassword" name="teacherPassword" required minlength="6" />
+
+    <label for="teacherConfirmPassword">Confirm Password</label>
+    <input type="password" id="teacherConfirmPassword" name="teacherConfirmPassword" required minlength="6" />
+
+    <button type="submit">Register as Teacher</button>
+    <div class="success-message" id="teacherSuccessMsg"></div>
+    <div class="error-message" id="teacherErrorMsg"></div>
+  </form>
+
+  <script>
+    document.getElementById('teacherRegisterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pass = document.getElementById('teacherPassword').value;
+      const confirm = document.getElementById('teacherConfirmPassword').value;
+      const successMsg = document.getElementById('teacherSuccessMsg');
+      const errorMsg = document.getElementById('teacherErrorMsg');
+      successMsg.textContent = "";
+      errorMsg.textContent = "";
+      if (pass !== confirm) {
+        errorMsg.textContent = "Passwords do not match!";
+        return;
+      }
+      // Here you would send the data to your backend for real registration
+      successMsg.textContent = "Registration successful! (Demo only)";
+      this.reset();
+    });
+  </script>
+</body>
+</html>

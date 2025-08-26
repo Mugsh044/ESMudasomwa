@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ES Mudasomwa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+    }
+
+    #campus {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 3em;
+      color: #34495e;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.3em;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    .campus-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .campus-gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+
+    .campus-gallery img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    }
+
+    .facilities {
+      margin-top: 50px;
+      align-content: center;
+       text-align: center;
+      padding: 100px 20px;
+    }
+
+    .facilities h3 {
+      font-size: 1.7em;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    .facilities ul {
+      display:flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      gap: 15px;
+    }
+   
+
+    .facilities ul li {
+      flex: 1 1 200px;
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      padding: 14px 20px;
+      border-radius: 10px;
+      color: #333;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    #testimonial-slider {
+      margin-top: 50px;
+      padding: 30px;
+      text-align: center;
+      background: #e0eafc;
+      border-left: 6px solid #6a89cc;
+      border-radius: 12px;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #2c3e50;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+    }
+
+    button {
+      display: block;
+      margin: 50px auto 0;
+      padding: 16px 32px;
+      font-size: 1.1em;
+      background-color: #6a89cc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #4a69bd;
+    }
+
+
+.oshakul-film-year {
+  position:-webkit-sticky ;
+  bottom: 12px;
+  right: 14px;
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  color: #181818;
+  font-weight: bold;
+  font-size: 1.02rem;
+  padding: 4px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+}
+
+   .testimonial-slider-mini {
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  padding: 0 10px;
+  margin: 28px auto;
+  max-width: 1900px;
+  min-width: 120px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-mini-header {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 8px 0 2px 0;
+  font-size: 1.08rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #0072ce 0%, #74ebd5 100%);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.09);
+  margin-bottom: 2px;
+  position: relative;
+  z-index: 2;
+}
+.testimonial-mini-slider-wrapper {
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+.testimonial-mini-card {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  left: 0; top: 0;
+  padding: 0 8px;
+  transition: opacity 0.4s;
+  background: rgba(255,255,255,0.97);
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+}
+.testimonial-mini-card.active {
+  display: flex;
+  animation: fadeInMini 0.6s;
+  position: absolute;
+}
+@keyframes fadeInMini {
+  from { opacity: 0; transform: translateY(15px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.testimonial-mini-text {
+  font-size: 1.50rem;
+  color: #0072ce;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
+}
+.testimonial-mini-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.89rem;
+  color: #333;
+  font-weight: bold;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.testimonial-mini-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #ffd200;
+  object-fit: cover;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+}
+.testimonial-mini-next-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: #0072ce;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  z-index: 3;
+}
+.testimonial-mini-next-btn:hover {
+  background: #ffd200;
+  color: #0072ce;
+  transform: scale(1.1);
+}
+@media (max-width: 500px) {
+  .testimonial-slider-mini {
+    max-width: 98vw;
+    min-width: 0;
+    padding: 0 4px;
+  }
+  .testimonial-mini-text {
+    max-width: 48%;
+    font-size: 0.85rem;
+  }
+  .testimonial-mini-meta {
+    font-size: 0.8rem;
+  }
+  .testimonial-mini-next-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+    right: 6px;
+    bottom: 6px;
+  }
+}
+
+ #testimonial-slider {
+      margin-top: 50px;
+      padding: 30px;
+      text-align: center;
+      background: #e0eafc;
+      border-left: 6px solid #6a89cc;
+      border-radius: 12px;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #2c3e50;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+    }
+     nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;
+    }
+
+
+   
+
+
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+
+  </style>
+</head>
+<body>
+    <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+  <section id="campus">
+    <h2>✨ Discover Our Campus</h2>
+    <p>From academic excellence to vibrant student life—step into your future here.</p>
+
+    <div class="campus-gallery">
+     
+
+
+<a href="#"> <span class="oshakul-film-year">Relations <img src="uburer.png" alt="Library"></span></a>
+     <a href="gallery.html"> <span class="oshakul-film-year">Garden <img src="ubusitani.png" alt="Library" alt="Labs"></span></a>
+    <a href="gallery.html"> <span class="oshakul-film-year">Sports<img src="imikino.png" alt="Library"></span></a>
+     <a href="gallery.html"> <span class="oshakul-film-year">School<img src="GATE.png" alt="Library" alt="Labs"></span></a>
+     <a href="gallery.html"> <span class="oshakul-film-year">Entertainment<img src="trad.jpeg" alt="Library" alt="Labs"></span></a>
+
+
+
+</div>
+    <div class="facilities">
+      <h3>Campus Highlights</h3>
+      <ul>
+       <li><a href="gallery.html">Cutting-Edge Labs</li></a>
+        <li><a href="gallery.html">Creative Spaces</li></a>
+       <li><a href="gallery.html">Entertainment</li></a>
+        <li><a href="gallery.html">Relations</li></a>
+       <li id="moz"><a href="gallery.html">Competition</li></a>
+      </ul>
+    </div>
+
+     <section class="testimonial-slider-mini">
+  <div class="testimonial-mini-header">
+    <span>💬 What Our Student Says</span>
+  </div>
+  <div class="testimonial-mini-slider-wrapper">
+    <div class="testimonial-mini-card active">
+      <span class="testimonial-mini-text">"Every day feels like a new adventure—love this campus!"</span>
+      <span class="testimonial-mini-meta">
+        <img src="liliane.jpeg" alt="Talia" class="testimonial-mini-avatar">
+        Betty, Senior 6
+      </span>
+    </div>
+    <div class="testimonial-mini-card">
+      <span class="testimonial-mini-text">"The environment and facilities are inspiring!"</span>
+      <span class="testimonial-mini-meta">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Malik" class="testimonial-mini-avatar">
+        Vanessa, Senior 5
+      </span>
+    </div>
+    <div class="testimonial-mini-card">
+      <span class="testimonial-mini-text">"It’s a place where dreams begin."</span>
+      <span class="testimonial-mini-meta">
+        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Chen" class="testimonial-mini-avatar">
+        Aime, Senior 6
+      </span>
+    </div>
+    <div class="testimonial-mini-card">
+      <span class="testimonial-mini-text">"Teachers here truly care about our success."</span>
+      <span class="testimonial-mini-meta">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amina" class="testimonial-mini-avatar">
+        Henriette, Senior 6
+      </span>
+    </div>
+  </div>
+ 
+</section>
+
+<script>
+
+
+
+
+const miniCards = document.querySelectorAll('.testimonial-mini-card');
+let miniIndex = 0;
+
+function showMiniTestimonial(idx) {
+  miniCards.forEach((card, i) => {
+    card.classList.toggle('active', i === idx);
+  });
+}
+
+function nextMiniTestimonial() {
+  miniIndex = (miniIndex + 1) % miniCards.length;
+  showMiniTestimonial(miniIndex);
+}
+
+// Change every 5 seconds
+setInterval(() => {
+  nextMiniTestimonial();
+},5000);
+    function sendInvite() {
+      const email = document.getElementById('friendEmail').value;
+      const subject = encodeURIComponent("Check out this website!");
+      const body = encodeURIComponent("Hey! This' ES Mudasomwa website. Have a look:\n\nhttps://www.example.com\n\nLet me know what you think!");
+
+      if (email) {
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+      } else {
+        alert("Please enter a valid email address.");
+      }
+    }
+
+
+
+  </script>
+   <footer>
+    <p>&copy;2025 ES Mudasomwa | Campus Highlights</p>
+    
+  </footer>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ES Mudasomwa</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #74ebd5, #9face6); margin: 0; padding: 40px; }
+    .container { max-width: 500px; margin-top: 20PX; margin-left: 450PX; background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #0077b6; margin-bottom: 30px; }
+    label { display: block; margin-top: 15px; font-weight: bold; color: #333; }
+    input, select { width: 100%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 1px solid #ccc; }
+    button { margin-top: 25px; width: 100%; padding: 12px; background: #0077b6; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; }
+    button:hover { background: #005f8e; }
+    #result { margin-top: 20px; color: green; font-weight: bold; text-align: center; }
+  
+    nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;}
+       .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+  </style>
+</head>
+<body>
+      <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+  <div class="container">
+    <h2>Eligibility Check</h2>
+    <form id="eligibilityForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required />
+
+      <label for="age">Result slip:</label>
+      <input type="file" id="docs" required />
+
+      <label for="nationality">Nationality:</label>
+      <input type="text" id="nationality" required />
+
+      <label for="employment">Employment Status:</label>
+      <select id="employment" required>
+        <option value="">Select</option>
+        <option value="Employed">Employed</option>
+        <option value="Unemployed">Unemployed</option>
+        <option value="Student">Student</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById("eligibilityForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = {
+        name: document.getElementById("name").value,
+        age: document.getElementById("age").value,
+        nationality: document.getElementById("nationality").value,
+        employment: document.getElementById("employment").value
+      };
+      localStorage.setItem("eligibilityInfo", JSON.stringify(data));
+      document.getElementById("result").innerText = "✅ Your information has been saved!";
+    });
+  </script>
+  <footer>
+    <p>&copy;2025 ES Mudasomwa | Eligibility Form</p>
+    
+  </footer>
+</body>
+</html>

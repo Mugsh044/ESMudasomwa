@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ES Mudasomwa</title>
+<style>
+.motivation-section {
+  background:  linear-gradient(135deg, #74ebd5, #9face6);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  padding: 48px 8% 38px 8%;
+  margin: 48px auto 40px auto;
+  max-width: 700px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.motivation-header h3 {
+  color: #fff;
+  font-size: 2.1rem;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.13);
+}
+.motivation-header p {
+  color: #fffbe7;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+}
+.motivation-quote-box {
+  background: rgba(255,255,255,0.92);
+  border-radius: 14px;
+  padding: 32px 18px 24px 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  display: inline-block;
+  min-width: 320px;
+  max-width: 100%;
+}
+.motivation-quote-box blockquote {
+  font-size: 1.25rem;
+  color: #f57c00;
+  font-style: italic;
+  margin-bottom: 18px;
+  min-height: 48px;
+  transition: color 0.2s;
+}
+.motivation-quote-box button {
+  background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 1.08rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.motivation-quote-box button:hover {
+  background: linear-gradient(90deg, #ffd200 0%, #f7971e 100%);
+  color: #f57c00;
+}
+@media (max-width: 600px) {
+  .motivation-section {
+    padding: 28px 2% 22px 2%;
+  }
+  .motivation-quote-box {
+    padding: 18px 6px 14px 6px;
+    min-width: 0;
+  }
+}
+
+    nav {
+      background-color: #005ca9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      color: white;
+    }
+
+
+   
+
+
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+
+
+</style>
+</head>
+  <nav>
+    <h1 class="logo">ES Mudasomwa</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+     
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+     
+    </ul>
+  </nav>
+<!-- Place this where you want the Motivation Quotes section to appear -->
+<section class="motivation-section">
+  <div class="motivation-header">
+    <h3>🌟 Motivation Quotes</h3>
+    <p>Get inspired for your learning journey!</p>
+  </div>
+  <div class="motivation-quote-box">
+    <blockquote id="motivationQuote">
+      "Education is the most powerful weapon which you can use to change the world." – Nelson Mandela
+    </blockquote>
+    <button onclick="showNextQuote()">Show Another Quote</button>
+  </div>
+</section>
+
+<!-- Add this CSS to your <style> tag in <head> -->
+
+
+<!-- Add this JS before </body> or in your script section -->
+<!-- ...existing code for the motivation section... -->
+<script>
+const motivationQuotes = [
+  '"Education is the most powerful weapon which you can use to change the world." – Nelson Mandela',
+  '"The future belongs to those who believe in the beauty of their dreams." – Eleanor Roosevelt',
+  '"Success is not the key to happiness. Happiness is the key to success." – Albert Schweitzer',
+  '"Don’t watch the clock; do what it does. Keep going." – Sam Levenson',
+  '"The only way to do great work is to love what you do." – Steve Jobs',
+  '"Believe you can and you’re halfway there." – Theodore Roosevelt',
+  '"Your limitation—it’s only your imagination."',
+  '"Push yourself, because no one else is going to do it for you."'
+];
+let motivationIndex = 0;
+const quoteElem = document.getElementById('motivationQuote');
+
+function showNextQuote() {
+  motivationIndex = (motivationIndex + 1) % motivationQuotes.length;
+  quoteElem.textContent = motivationQuotes[motivationIndex];
+}
+
+// Automatically change quote every 5 seconds
+setInterval(showNextQuote, 5000);
+</script>
