@@ -303,7 +303,7 @@
       <button type="submit">Login</button>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
   <a href="#" style="font-size:0.97rem; color:#0072ce; text-decoration:none;" onclick="showForgotPassword(event)">Forgot password?</a>
-  <a href="#" style="font-size:0.97rem; color:#0072ce; text-decoration:none;" onclick="showSignUp(event)">Or Sign in</a>
+  <a href="#" style="font-size:0.97rem; color:#0072ce; text-decoration:none;" onclick="showSignUp(event)">Or Register</a>
       </div>
     </form>
     <div class="login-footer">Quiz App | ES Mudasomwa</div>
@@ -315,6 +315,14 @@
         <button onclick="closeSignUp()" style="position:absolute; top:10px; right:16px; background:none; border:none; font-size:1.3rem; color:#888; cursor:pointer;">&times;</button>
         <h2 style="color:#005ca9; margin-bottom:18px;">Register</h2>
         <form onsubmit="handleSignUp(event)">
+          <div class="login-input-group">
+            <span class="login-input-icon">&#128100;</span>
+            <input type="text" id="signupFullName" placeholder="Full Name" required autocomplete="name">
+          </div>
+          <div class="login-input-group">
+            <span class="login-input-icon">&#9993;</span>
+            <input type="email" id="signupEmail" placeholder="Email" required autocomplete="email">
+          </div>
           <div class="login-input-group">
             <span class="login-input-icon">&#128100;</span>
             <input type="text" id="signupUsername" placeholder="Username" required autocomplete="username">
@@ -357,12 +365,18 @@
     // Handle Register (adds user to users array in memory only)
     function handleSignUp(event) {
       event.preventDefault();
+      const fullName = document.getElementById('signupFullName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
       const username = document.getElementById('signupUsername').value.trim();
       const password = document.getElementById('signupPassword').value;
       const confirmPassword = document.getElementById('signupConfirmPassword').value;
       const role = document.getElementById('signupRole').value;
-      if (!username || !password || !confirmPassword) {
+      if (!fullName || !email || !username || !password || !confirmPassword) {
         alert('Please fill in all fields.');
+        return;
+      }
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert('Please enter a valid email address.');
         return;
       }
       if (password !== confirmPassword) {
@@ -373,7 +387,7 @@
         alert('Username already exists.');
         return;
       }
-      users.push({ username, password, role });
+      users.push({ fullName, email, username, password, role });
       alert('Account created! You can now log in.');
       closeSignUp();
     }
@@ -605,6 +619,3 @@
   </script>
 </body>
 </html>
-
-
-
