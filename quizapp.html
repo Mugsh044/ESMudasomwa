@@ -301,8 +301,83 @@
         <button type="button" class="show-password-toggle" onclick="togglePassword()" tabindex="-1" aria-label="Show Password">&#128065;</button>
       </div>
       <button type="submit">Login</button>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+  <a href="#" style="font-size:0.97rem; color:#0072ce; text-decoration:none;" onclick="showForgotPassword(event)">Forgot password?</a>
+  <a href="#" style="font-size:0.97rem; color:#0072ce; text-decoration:none;" onclick="showSignUp(event)">Register if you don't have an account</a>
+      </div>
     </form>
     <div class="login-footer">Quiz App | ES Mudasomwa</div>
+
+    <!-- Forgot Password Modal (simple alert for now) -->
+    <!-- Register Modal -->
+    <div id="signupModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.25); z-index:1000; justify-content:center; align-items:center;">
+      <div style="background:#fff; border-radius:16px; padding:32px 24px; min-width:340px; box-shadow:0 8px 32px rgba(0,0,0,0.18); position:relative;">
+        <button onclick="closeSignUp()" style="position:absolute; top:10px; right:16px; background:none; border:none; font-size:1.3rem; color:#888; cursor:pointer;">&times;</button>
+        <h2 style="color:#005ca9; margin-bottom:18px;">Register</h2>
+        <form onsubmit="handleSignUp(event)">
+          <div class="login-input-group">
+            <span class="login-input-icon">&#128100;</span>
+            <input type="text" id="signupUsername" placeholder="Username" required autocomplete="username">
+          </div>
+          <div class="login-input-group">
+            <span class="login-input-icon">&#128274;</span>
+            <input type="password" id="signupPassword" placeholder="Password" required autocomplete="new-password">
+          </div>
+          <div class="login-input-group">
+            <span class="login-input-icon">&#128274;</span>
+            <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required autocomplete="new-password">
+          </div>
+          <div class="login-input-group" style="margin-bottom: 18px;">
+            <select id="signupRole" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ccc; font-size:1rem; color:#2c3e50; background:#f7fafd;">
+              <option value="Student" selected>Student</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Admin">Admin</option>
+            </select>
+          </div>
+          <button type="submit" style="margin-top:10px;">Register</button>
+        </form>
+      </div>
+    </div>
+  <script>
+    // Show forgot password (simple alert for now)
+    function showForgotPassword(e) {
+      e.preventDefault();
+      alert('Please contact your administrator or teacher to reset your password.');
+    }
+
+    // Show/Hide Sign Up Modal
+    function showSignUp(e) {
+      e.preventDefault();
+      document.getElementById('signupModal').style.display = 'flex';
+    }
+    function closeSignUp() {
+      document.getElementById('signupModal').style.display = 'none';
+    }
+
+    // Handle Register (adds user to users array in memory only)
+    function handleSignUp(event) {
+      event.preventDefault();
+      const username = document.getElementById('signupUsername').value.trim();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      const role = document.getElementById('signupRole').value;
+      if (!username || !password || !confirmPassword) {
+        alert('Please fill in all fields.');
+        return;
+      }
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+      if (users.find(u => u.username === username)) {
+        alert('Username already exists.');
+        return;
+      }
+      users.push({ username, password, role });
+      alert('Account created! You can now log in.');
+      closeSignUp();
+    }
+  </script>
   </div>
   <script>
     // Show/Hide Password Toggle
@@ -530,4 +605,3 @@
   </script>
 </body>
 </html>
-
