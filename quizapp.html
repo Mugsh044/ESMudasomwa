@@ -12,48 +12,146 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #74ebd5, #9face6);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
       color: #2c3e50;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated Gradient Circles */
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+      z-index: 0;
+      animation: float 8s ease-in-out infinite alternate;
+    }
+    .bg-circle1 {
+      width: 400px; height: 400px; left: -100px; top: -100px; background: #74ebd5;
+      animation-delay: 0s;
+    }
+    .bg-circle2 {
+      width: 300px; height: 300px; right: -80px; bottom: -80px; background: #9face6;
+      animation-delay: 2s;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(40px) scale(1.05); }
     }
 
     /* Login Styles */
     .login-container {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 40px 30px 30px 30px;
       text-align: center;
-      width: 300px;
+      width: 340px;
       display: none; /* Hidden by default */
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .login-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 18px auto;
+      background: linear-gradient(135deg, #74ebd5 60%, #9face6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      font-size: 2.5rem;
+      color: #fff;
+      font-weight: bold;
+      letter-spacing: 2px;
+      border: 3px solid #fff;
     }
     .login-container h2 {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       color: #005ca9;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
-    .login-container input {
+    .login-input-group {
+      position: relative;
+      margin-bottom: 18px;
+    }
+    .login-input-group input {
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      padding: 12px 40px 12px 40px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      font-size: 1rem;
+      color: #2c3e50;
+      outline: none;
+      transition: box-shadow 0.2s;
     }
-    .login-container button {
-      background: #0072ce;
+    .login-input-group input:focus {
+      box-shadow: 0 0 0 2px #74ebd5;
+    }
+    .login-input-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: #0072ce;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    .show-password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: #888;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+    }
+    .login-container button[type="submit"] {
+      background: linear-gradient(90deg, #74ebd5 0%, #0072ce 100%);
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 12px 0;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      width: 100%;
+      margin-top: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, transform 0.1s;
     }
-    .login-container button:hover {
-      background: #005ca9;
+    .login-container button[type="submit"]:hover {
+      background: linear-gradient(90deg, #0072ce 0%, #74ebd5 100%);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .login-container .login-footer {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: #888;
     }
 
     /* Quiz Styles */
@@ -183,14 +281,43 @@
 </head>
 <body>
   <!-- Login Section -->
+  <!-- Animated Background Circles -->
+  <div class="bg-circle bg-circle1"></div>
+  <div class="bg-circle bg-circle2"></div>
+
   <div class="login-container" id="loginContainer">
-    <h2>Login</h2>
+    <div class="login-logo">
+      <span>QZ</span>
+    </div>
+    <h2>Welcome Back!</h2>
     <form onsubmit="handleLogin(event)">
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="password" id="password" placeholder="Password" required>
+      <div class="login-input-group">
+        <span class="login-input-icon">&#128100;</span>
+        <input type="text" id="username" placeholder="Username" required autocomplete="username">
+      </div>
+      <div class="login-input-group">
+        <span class="login-input-icon">&#128274;</span>
+        <input type="password" id="password" placeholder="Password" required autocomplete="current-password">
+        <button type="button" class="show-password-toggle" onclick="togglePassword()" tabindex="-1" aria-label="Show Password">&#128065;</button>
+      </div>
       <button type="submit">Login</button>
     </form>
+    <div class="login-footer">Quiz App | ES Mudasomwa</div>
   </div>
+  <script>
+    // Show/Hide Password Toggle
+    function togglePassword() {
+      const pwd = document.getElementById('password');
+      const toggleBtn = document.querySelector('.show-password-toggle');
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+        toggleBtn.innerHTML = '&#128064;';
+      } else {
+        pwd.type = 'password';
+        toggleBtn.innerHTML = '&#128065;';
+      }
+    }
+  </script>
 
   <!-- Quiz Section -->
   <div class="quiz-container" id="quizContainer">
