@@ -30,7 +30,7 @@
       </ul>
     </div>
     <div class="about-img">
-      <img src="GATE.png" alt="School Campus" />
+      <img src="GATE.png" alt="School Campus" style="display:block;" />
     </div>
   </div>
   <div class="info-row">
@@ -75,12 +75,77 @@
     </iframe>
   </div>
 </section>
- <footer>
-    <p>&copy;2025 ES Mudasomwa | About Us</p>
-    
-  </footer>
-<!-- Add this section where you want the Google Map to appear -->
-<style>
+
+<footer class="adore-footer">
+  <div class="footer-bg-anim"></div>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <span class="footer-logo">
+        <svg width="70" height="70" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="logo-bg" cx="32" cy="32" r="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff"/>
+              <stop offset="60%" stop-color="#74ebd5"/>
+              <stop offset="100%" stop-color="#005ca9"/>
+            </radialGradient>
+            <linearGradient id="cap-gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffd200"/>
+              <stop offset="1" stop-color="#005ca9"/>
+            </linearGradient>
+            <linearGradient id="book-gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#fff"/>
+              <stop offset="1" stop-color="#74ebd5"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="url(#logo-bg)" stroke="#005ca9" stroke-width="3"/>
+          <circle cx="32" cy="32" r="30" fill="none" stroke="#ffd200" stroke-width="1.5" opacity="0.5"/>
+          <g>
+            <polygon points="32,16 48,24 32,32 16,24" fill="url(#cap-gradient)" stroke="#005ca9" stroke-width="1.2"/>
+            <rect x="28" y="32" width="8" height="4" rx="1.5" fill="#005ca9" stroke="#ffd200" stroke-width="1"/>
+            <line x1="32" y1="32" x2="32" y2="40" stroke="#ffd200" stroke-width="1.5"/>
+            <circle cx="32" cy="41.5" r="1.2" fill="#ffd200"/>
+          </g>
+          <g>
+            <rect x="20" y="44" width="24" height="7" rx="2.5" fill="url(#book-gradient)" stroke="#005ca9" stroke-width="1.2"/>
+            <line x1="32" y1="44" x2="32" y2="51" stroke="#005ca9" stroke-width="1"/>
+          </g>
+          <text x="32" y="40" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial, sans-serif" font-weight="bold" fill="#005ca9" letter-spacing="2" style="text-shadow:0 2px 8px #fff,0 1px 0 #ffd200;">ESM</text>
+        </svg>
+      </span>
+      <h2>ES Mudasomwa</h2>
+      <p class="footer-slogan">Empowering Dreams, Inspiring Futures</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="admission.html">Admissions</a>
+      <a href="campus3.html">Campus</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p><a href="mailto:info@mudasomwa.edu.rw">info@mudasomwa.edu.rw</a></p>
+      <p><a href="tel:+250788833651">+250 788 833 651</a></p>
+      <div class="footer-socials">
+        <a href="#" title="Facebook" class="footer-social"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"></a>
+        <a href="#" title="Twitter" class="footer-social"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter"></a>
+        <a href="#" title="Instagram" class="footer-social"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+        <a href="#" title="YouTube" class="footer-social"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
+      </div>
+    </div>
+    <div class="footer-newsletter">
+      <h4>Newsletter</h4>
+      <form onsubmit="event.preventDefault();alert('Thank you for subscribing!')" class="newsletter-form">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter-note">Stay updated with our latest news!</p>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy;2025 ES Mudasomwa | About Us</div>
+</footer>
+  <style>
   body{background:linear-gradient(135deg, #74ebd5, #9face6);}
      .cta-btn {
       background-color: #00f7ff; color: #2c3e50; padding: 12px 24px;
@@ -335,6 +400,176 @@
     align-items: center;
     gap: 24px;
   }
+}
+/* Adoreful Footer Styles */
+.adore-footer {
+  position: relative;
+  overflow: hidden;
+  margin-top: 60px;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -8px 32px #005ca955, 0 2px 12px #ffd20033;
+  background: rgba(255,255,255,0.85);
+  padding: 0;
+}
+.footer-bg-anim {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+  background: linear-gradient(120deg, #ffd200 0%, #74ebd5 50%, #005ca9 100%);
+  opacity: 0.13;
+  animation: footerGradientMove 12s linear infinite alternate;
+}
+@keyframes footerGradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.footer-main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 48px 6% 24px 6%;
+  gap: 32px;
+}
+.footer-brand {
+  flex: 1 1 220px;
+  min-width: 180px;
+  text-align: center;
+}
+.footer-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 12px #005ca955;
+  background: #fff;
+}
+.footer-slogan {
+  color: #005ca9;
+  font-size: 1.08rem;
+  margin-top: 8px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.footer-links, .footer-contact, .footer-newsletter {
+  flex: 1 1 180px;
+  min-width: 160px;
+  margin-bottom: 18px;
+}
+.footer-links h4, .footer-contact h4, .footer-newsletter h4 {
+  color: #0072ce;
+  font-size: 1.13rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.footer-links a {
+  display: block;
+  color: #005ca9;
+  text-decoration: none;
+  margin-bottom: 7px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #ffd200;
+}
+.footer-contact a {
+  color: #005ca9;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-contact a:hover {
+  color: #ffd200;
+}
+.footer-socials {
+  margin-top: 10px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+}
+.footer-social img {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(0.2) brightness(1.1);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px #005ca933;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.footer-social img:hover {
+  transform: scale(1.18) rotate(-6deg);
+  box-shadow: 0 4px 18px #ffd20077;
+}
+.footer-newsletter .newsletter-form {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.footer-newsletter input[type="email"] {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1.5px solid #74ebd5;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.footer-newsletter input[type="email"]:focus {
+  border: 1.5px solid #ffd200;
+}
+.footer-newsletter button {
+  background: linear-gradient(90deg, #ffd200 0%, #74ebd5 100%);
+  color: #005ca9;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #005ca933;
+  transition: background 0.2s, color 0.2s;
+}
+.footer-newsletter button:hover {
+  background: linear-gradient(90deg, #74ebd5 0%, #ffd200 100%);
+  color: #0072ce;
+}
+.newsletter-note {
+  color: #2c3e50;
+  font-size: 0.98rem;
+  margin-top: 2px;
+}
+.footer-bottom {
+  background: rgba(255,255,255,0.85);
+  text-align: center;
+  color: #005ca9;
+  font-size: 1.08rem;
+  font-weight: 500;
+  padding: 16px 0 10px 0;
+  border-top: 1.5px solid #e0eafc;
+  margin-top: 12px;
+  letter-spacing: 0.5px;
+}
+.school-logo-overlay {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 50%;
+  box-shadow: 0 2px 12px #005ca955;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  z-index: 2;
+  transition: transform 0.2s;
+}
+.school-logo-overlay:hover {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 6px 24px #ffd20077;
 }
 </style>
 
