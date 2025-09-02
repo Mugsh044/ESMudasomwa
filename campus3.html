@@ -281,14 +281,20 @@
       color: #2c3e50;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
     }
-     nav {
+    #animated-bg {
+      position:fixed;z-index:-1;top:0;left:0;width:100vw;height:100vh;overflow:hidden;pointer-events:none;
+    }
+    nav {
       background-color: #005ca9;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 5%;
       color: white;
+      box-shadow: 0 2px 12px #005ca97a;
     }
+    .logo { font-size: 1.8rem; font-weight: bold; display:flex; align-items:center; }
+    .site-logo { margin-right:14px; }
 
 
    
@@ -302,44 +308,161 @@
   </style>
 </head>
 <body>
-    <nav>
-    <h1 class="logo">ES Mudasomwa</h1>
+  <div id="animated-bg">
+    <svg width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:absolute;top:0;left:0;">
+      <circle id="bg-c1" cx="300" cy="200" r="110" fill="#74ebd5" opacity="0.18">
+        <animate attributeName="cy" values="200;300;200" dur="8s" repeatCount="indefinite"/>
+      </circle>
+      <circle id="bg-c2" cx="1600" cy="400" r="90" fill="#ffd200" opacity="0.13">
+        <animate attributeName="cx" values="1600;1500;1600" dur="7s" repeatCount="indefinite"/>
+      </circle>
+      <circle id="bg-c3" cx="900" cy="900" r="140" fill="#005ca9" opacity="0.10">
+        <animate attributeName="r" values="140;110;140" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <circle id="bg-c4" cx="400" cy="900" r="60" fill="#9face6" opacity="0.12">
+        <animate attributeName="cy" values="900;800;900" dur="6s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+  <nav>
+    <div style="display: flex; align-items: center;">
+      <div class="site-logo">
+        <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="logo-bg" cx="32" cy="32" r="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff"/>
+              <stop offset="60%" stop-color="#74ebd5"/>
+              <stop offset="100%" stop-color="#005ca9"/>
+            </radialGradient>
+            <linearGradient id="cap-gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffd200"/>
+              <stop offset="1" stop-color="#005ca9"/>
+            </linearGradient>
+            <linearGradient id="book-gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#fff"/>
+              <stop offset="1" stop-color="#74ebd5"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="url(#logo-bg)" stroke="#005ca9" stroke-width="3"/>
+          <circle cx="32" cy="32" r="30" fill="none" stroke="#ffd200" stroke-width="1.5" opacity="0.5"/>
+          <g>
+            <polygon points="32,16 48,24 32,32 16,24" fill="url(#cap-gradient)" stroke="#005ca9" stroke-width="1.2"/>
+            <rect x="28" y="32" width="8" height="4" rx="1.5" fill="#005ca9" stroke="#ffd200" stroke-width="1"/>
+            <line x1="32" y1="32" x2="32" y2="40" stroke="#ffd200" stroke-width="1.5"/>
+            <circle cx="32" cy="41.5" r="1.2" fill="#ffd200"/>
+          </g>
+          <g>
+            <rect x="20" y="44" width="24" height="7" rx="2.5" fill="url(#book-gradient)" stroke="#005ca9" stroke-width="1.2"/>
+            <line x1="32" y1="44" x2="32" y2="51" stroke="#005ca9" stroke-width="1"/>
+          </g>
+          <text x="32" y="40" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial, sans-serif" font-weight="bold" fill="#005ca9" letter-spacing="2" style="text-shadow:0 2px 8px #fff,0 1px 0 #ffd200;">ESM</text>
+        </svg>
+      </div>
+      <h1 class="logo" style="margin:0;">ES Mudasomwa</h1>
+    </div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      
       <li><a href="admission.html">Admissions</a></li>
       <li><a href="campus3.html">Campus</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="about.html">About</a></li>
-     
     </ul>
   </nav>
+  <!-- Digital Stats Section -->
+  <section class="digital-stats" style="background:rgba(255,255,255,0.85);margin:40px auto 0 auto;padding:36px 0 18px 0;border-radius:18px;box-shadow:0 4px 24px #005ca91a;max-width:1100px;display:flex;justify-content:space-around;align-items:center;gap:30px;flex-wrap:wrap;">
+    <div class="stat-card" style="text-align:center;">
+      <div style="font-size:2.5rem;color:#ffd200;">👨‍🎓</div>
+      <div class="stat-num" data-target="1200" style="font-size:2.2rem;font-weight:900;color:#005ca9;">0</div>
+      <div style="font-size:1.1rem;color:#2c3e50;">Students</div>
+    </div>
+    <div class="stat-card" style="text-align:center;">
+      <div style="font-size:2.5rem;color:#74ebd5;">👩‍🏫</div>
+      <div class="stat-num" data-target="65" style="font-size:2.2rem;font-weight:900;color:#005ca9;">0</div>
+      <div style="font-size:1.1rem;color:#2c3e50;">Teachers</div>
+    </div>
+    <div class="stat-card" style="text-align:center;">
+      <div style="font-size:2.5rem;color:#005ca9;">🏆</div>
+      <div class="stat-num" data-target="18" style="font-size:2.2rem;font-weight:900;color:#005ca9;">0</div>
+      <div style="font-size:1.1rem;color:#2c3e50;">Awards</div>
+    </div>
+    <div class="stat-card" style="text-align:center;">
+      <div style="font-size:2.5rem;color:#ffd200;">🌐</div>
+      <div class="stat-num" data-target="7" style="font-size:2.2rem;font-weight:900;color:#005ca9;">0</div>
+      <div style="font-size:1.1rem;color:#2c3e50;">Digital Labs</div>
+    </div>
+  </section>
+  <script>
+    // Animated counters
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.stat-num').forEach(function(el) {
+        const target = +el.getAttribute('data-target');
+        let count = 0;
+        const step = Math.max(1, Math.floor(target / 60));
+        function update() {
+          count += step;
+          if (count >= target) { el.textContent = target; return; }
+          el.textContent = count;
+          requestAnimationFrame(update);
+        }
+        update();
+      });
+    });
+  </script>
   <section id="campus">
     <h2>✨ Discover Our Campus</h2>
     <p>From academic excellence to vibrant student life—step into your future here.</p>
 
     <div class="campus-gallery">
-     
-
-
-<a href="#"> <span class="oshakul-film-year">Relations <img src="uburer.png" alt="Library"></span></a>
-     <a href="gallery.html"> <span class="oshakul-film-year">Garden <img src="ubusitani.png" alt="Library" alt="Labs"></span></a>
-    <a href="gallery.html"> <span class="oshakul-film-year">Sports<img src="imikino.png" alt="Library"></span></a>
-     <a href="gallery.html"> <span class="oshakul-film-year">Full Gallery<img src="GATE.png" alt="Library" alt="Labs"></span></a>
-     <a href="gallery.html"> <span class="oshakul-film-year">Entertainment<img src="trad.jpeg" alt="Library" alt="Labs"></span></a>
-
-
-
-</div>
+      <a href="#"><span class="oshakul-film-year adv-card">Relations <img src="uburer.png" alt="Relations"></span></a>
+      <a href="gallery.html"><span class="oshakul-film-year adv-card">Garden <img src="ubusitani.png" alt="Garden"></span></a>
+      <a href="gallery.html"><span class="oshakul-film-year adv-card">Sports <img src="imikino.png" alt="Sports"></span></a>
+      <a href="gallery.html"><span class="oshakul-film-year adv-card">Full Gallery <img src="GATE.png" alt="Gallery"></span></a>
+      <a href="gallery.html"><span class="oshakul-film-year adv-card">Entertainment <img src="trad.jpeg" alt="Entertainment"></span></a>
+    </div>
     <div class="facilities">
       <h3>Campus Highlights</h3>
       <ul>
-       <li><a href="gallery.html">Cutting-Edge Labs</li></a>
-        <li><a href="gallery.html">Creative Spaces</li></a>
-       <li><a href="gallery.html">Entertainment</li></a>
-        <li><a href="gallery.html">Relations</li></a>
-       <li id="moz"><a href="gallery.html">Competitions</li></a>
+        <li class="adv-card"><a href="gallery.html">Cutting-Edge Labs</a></li>
+        <li class="adv-card"><a href="gallery.html">Creative Spaces</a></li>
+        <li class="adv-card"><a href="gallery.html">Entertainment</a></li>
+        <li class="adv-card"><a href="gallery.html">Relations</a></li>
+        <li class="adv-card" id="moz"><a href="gallery.html">Competition</a></li>
       </ul>
+<!-- Floating Chatbot Button -->
+<div id="chatbot-btn" style="position:fixed;bottom:28px;right:28px;z-index:9999;">
+  <button onclick="openChatbot()" style="background:#005ca9;color:#fff;border:none;border-radius:50%;width:62px;height:62px;box-shadow:0 4px 18px #005ca97a;font-size:2.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;">
+    💬
+  </button>
+</div>
+<div id="chatbot-modal" style="display:none;position:fixed;bottom:100px;right:40px;z-index:10000;background:#fff;border-radius:18px;box-shadow:0 8px 32px #005ca97a;width:340px;max-width:95vw;min-height:220px;padding:0;overflow:hidden;">
+  <div style="background:#005ca9;color:#fff;padding:14px 18px;font-weight:bold;display:flex;align-items:center;justify-content:space-between;">
+    <span>ESM Digital Assistant</span>
+    <button onclick="closeChatbot()" style="background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;">&times;</button>
+  </div>
+  <iframe src="https://www.chatbase.co/chatbot-iframe/clsxw7v7h0000l208h8kq1w2w" style="width:100%;height:260px;border:none;"></iframe>
+</div>
+<script>
+  function openChatbot() {
+    document.getElementById('chatbot-modal').style.display = 'block';
+  }
+  function closeChatbot() {
+    document.getElementById('chatbot-modal').style.display = 'none';
+  }
+</script>
+  <style>
+    /* Animated card effects */
+    .adv-card {
+      transition: transform 0.35s cubic-bezier(.4,2,.3,1), box-shadow 0.3s;
+      box-shadow: 0 2px 10px #005ca91a;
+      position: relative;
+      z-index: 1;
+    }
+    .adv-card:hover {
+      transform: scale(1.06) translateY(-4px) rotate(-1deg);
+      box-shadow: 0 8px 32px #005ca97a;
+      background: linear-gradient(120deg, #e3f2fd 60%, #f7fafd 100%);
+    }
+  </style>
     </div>
 
      <section class="testimonial-slider-mini">
@@ -423,6 +546,3 @@ setInterval(() => {
   </footer>
 </body>
 </html>
-
-
-
