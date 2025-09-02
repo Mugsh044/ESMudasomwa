@@ -14,6 +14,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
     }
 
     h1 {
@@ -23,28 +24,114 @@
       text-align: center;
     }
 
+    .search-bar {
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 6px 12px;
+      border: 1.5px solid #74ebd5;
+    }
+    .search-bar input {
+      border: none;
+      outline: none;
+      font-size: 1.1rem;
+      flex: 1;
+      background: transparent;
+      padding: 8px 0;
+      color: #005ca9;
+    }
+    .search-bar svg {
+      margin-right: 8px;
+      color: #0072ce;
+    }
+
     .course-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
       width: 100%;
-      max-width: 1000px;
+      max-width: 1100px;
+      margin-bottom: 30px;
     }
 
     .course {
       background-color: white;
       border: 2px solid #005ca9;
-      padding: 20px;
-      border-radius: 12px;
+      padding: 28px 18px 18px 18px;
+      border-radius: 16px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      transition: all 0.3s cubic-bezier(.4,2,.3,1);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+      position: relative;
+      min-height: 180px;
+      overflow: hidden;
     }
-
     .course:hover {
-      background-color: #e3f2fd;
-      transform: scale(1.05);
+      background: linear-gradient(120deg, #e3f2fd 60%, #f7fafd 100%);
+      transform: scale(1.06) translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,92,169,0.13);
+      z-index: 2;
+    }
+    .course .course-icon {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: #0072ce;
+      display: block;
+      transition: transform 0.2s;
+    }
+    .course .favorite-btn {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: #bbb;
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .course .favorite-btn.favorited {
+      color: #ff3b3b;
+      transform: scale(1.2);
+    }
+    .course h4 {
+      margin: 0 0 8px 0;
+      color: #005ca9;
+      font-size: 1.18rem;
+    }
+    .course .course-link {
+      background: #0072ce;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 18px;
+      font-size: 1rem;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .course .course-link:hover {
+      background: #005ca9;
+    }
+    .course .enrolled-badge {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      background: #ffd200;
+      color: #005ca9;
+      font-size: 0.95rem;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 2px 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
     }
 
     #feedback {
@@ -59,19 +146,65 @@
       text-align: center;
       max-width: 600px;
     }
-     nav {
+    nav {
       background-color: #005ca9;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 5%;
       color: white;
-      width: 1500px;
+      width: 100%;
+      max-width: 1500px;
     }
     .logo { font-size: 1.8rem; font-weight: bold; }
     .nav-links { list-style: none; display: flex; gap: 20px; }
     .nav-links a { color: white; text-decoration: none; font-weight: 500; }
 
+    /* Modal Styles */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.18);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-bg.active { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 32px 24px;
+      min-width: 320px;
+      max-width: 90vw;
+      position: relative;
+      text-align: center;
+      animation: fadeIn 0.4s;
+    }
+    .modal h2 { color: #005ca9; margin-bottom: 12px; }
+    .modal p { color: #2c3e50; margin-bottom: 18px; }
+    .modal .close-btn {
+      position: absolute;
+      top: 10px; right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: #888;
+      cursor: pointer;
+    }
+    .modal .course-link {
+      margin-top: 10px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 700px) {
+      nav { padding: 10px 2%; }
+      .course-grid { grid-template-columns: 1fr; }
+      .modal { min-width: 90vw; }
+    }
   </style>
 </head>
 <body>
@@ -88,28 +221,160 @@
     </ul>
   </nav>
   <h1>💼 Choose Your Favorite Course</h1>
+  <div class="search-bar">
+    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="searchInput" placeholder="Search courses..." oninput="filterCourses()" />
+  </div>
 
-  <div class="course-grid">
-    <div class="course" onclick="selectCourse('Physics')"><button onclick="window.location.href='https://elearning.reb.rw/pluginfile.php/55344/mod_resource/content/2/ANP-Physics-S6-SB.pdf '"><h4>PHYSICS</h4></button></div>
-     <div class="course" onclick="selectCourse('Chemistry')"><button onclick="window.location.href='https://elearning.reb.rw/pluginfile.php/11991/mod_resource/content/1/Chemistry%20S6%20SB.pdf '"><h4>CHEMISTRY</h4></button></div>
-      <div class="course" onclick="selectCourse('Biology')"><button onclick="window.location.href='https://elearning.reb.rw/pluginfile.php/84790/mod_resource/content/2/ANP-Biology-S6-SB.pdf '"><h4>BIOLOGY</h4></button></div>
-  <div class="course" onclick="selectCourse('Subsidiary Mathematics')"><button onclick="window.location.href='https://elearning.reb.rw/pluginfile.php/15430/mod_resource/content/1/S6%20Sub%20Maths%20SB%20%281%29.pdf '"><h4>SUB MATHEMATICS</h4></button></div>
-    <div class="course" onclick="selectCourse('Entrepreneurship')"><button onclick="window.location.href=' https://elearning.reb.rw/pluginfile.php/55372/mod_resource/content/1/SB%20S6%20Entrepreneurship%20%281%29.pdf'"><h4>ENTREPRENEURSHIP</h4></button></div>
-    <div class="course" onclick="selectCourse('English Language')"><button onclick="window.location.href=' https://elearning.reb.rw/pluginfile.php/42653/mod_resource/content/1/English%20S6%20SB%20CS6.pdf'"><h4>ENGLISH</h4></button></div>
-    <div class="course" onclick="selectCourse('Kinyarwanda Language')"><button onclick="window.location.href='https://elearning.reb.rw/pluginfile.php/1/block_exalib/item_file/93/Kinyarwanda%20Core%20S6%20SB.pdf '"><h4>KINYARWANDA</h4></button></div>
-    <div class="course" onclick="selectCourse('France Language')"><button onclick="window.location.href=' https://elearning.reb.rw/pluginfile.php/11963/mod_resource/content/3/French%20S6%20SB%20LFK.pdf'"><h4>FRANCE</h4></button></div>
-    <div class="course" onclick="selectCourse('General studies')"><button onclick="window.location.href=' https://elearning.reb.rw/pluginfile.php/12066/mod_resource/content/1/General%20Studies%20and%20Comm.%20Skills%20S6%20SB.pdf'"><h4>GENERAL STUDIES</h4></button></div>
-    
+  <div class="course-grid" id="courseGrid">
+    <!-- Courses will be rendered here by JS -->
   </div>
 
   <div id="feedback"></div>
 
+  <!-- Modal for course info -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal" id="modal">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <a id="modalLink" class="course-link" href="#" target="_blank">Go to Course</a>
+    </div>
+  </div>
+
   <script>
-    function selectCourse(courseName) {
-      const feedback = document.getElementById("feedback");
-      feedback.textContent = `✅ You selected: ${courseName}`;
-      feedback.style.display = "block";
+    // Course data with icons, descriptions, and links (PCB S5 content)
+    const courses = [
+      {
+        name: 'Physics',
+        icon: '🔭',
+        desc: 'Explore the laws of nature, motion, and energy in Physics.',
+        link: 'https://elearning.reb.rw/pluginfile.php/11053/mod_resource/content/1/PHYSICS%20S5%20SB.pdf',
+        teacher: 'Mr. Jean Claude',
+      },
+      {
+        name: 'Chemistry',
+        icon: '⚗️',
+        desc: 'Explore the world of atoms, molecules, and reactions in Chemistry.',
+        link: 'https://elearning.reb.rw/pluginfile.php/11302/mod_resource/content/1/Chemistry%20S5%20SB.pdf',
+        teacher: 'Ms. Alice Uwase',
+      },
+      {
+        name: 'Biology',
+        icon: '🧬',
+        desc: 'Learn about living things, health, and the environment in Biology.',
+        link: 'https://elearning.reb.rw/course/view.php?id=1285',
+        teacher: 'Mr. Eric N.',
+      },
+      {
+        name: 'Subsidiary Mathematics',
+        icon: '➗',
+        desc: 'Sharpen your math skills with subsidiary mathematics.',
+        link: 'https://elearning.reb.rw/pluginfile.php/46295/mod_resource/content/1/Mathematics%20book%20For%20Senior%205%20LFK-%20HLP-%20HGL.pdf',
+        teacher: 'Ms. Diane M.',
+      },
+      {
+        name: 'Entrepreneurship',
+        icon: '🚀',
+        desc: 'Learn how to start, manage, and grow a business with real-world skills.',
+        link: 'https://elearning.reb.rw/pluginfile.php/55372/mod_resource/content/1/SB%20S6%20Entrepreneurship%20%281%29.pdf',
+        teacher: 'Ms. Diane M.',
+      },
+      {
+        name: 'English',
+        icon: '📖',
+        desc: 'Master the English language for global communication and success.',
+        link: 'https://elearning.reb.rw/pluginfile.php/42653/mod_resource/content/1/English%20S6%20SB%20CS6.pdf',
+        teacher: 'Mr. John Smith',
+      },
+      {
+        name: 'Kinyarwanda',
+        icon: '📝',
+        desc: 'Deepen your understanding of Kinyarwanda language and culture.',
+        link: 'https://elearning.reb.rw/pluginfile.php/86224/mod_resource/content/1/IKINYARWANDA%20S5%20SB.pdf',
+        teacher: 'Ms. Chantal U.',
+      },
+      {
+        name: 'French',
+        icon: '🇫🇷',
+        desc: 'Learn French and open doors to new cultures and opportunities.',
+        link: 'https://elearning.reb.rw/pluginfile.php/47378/mod_resource/content/1/FRENCH%20S5%20EL%20SB%20%282%29.pdf',
+        teacher: 'Mr. Pierre L.',
+      },
+      {
+        name: 'General Studies',
+        icon: '🎓',
+        desc: 'Broaden your knowledge with a variety of general education topics.',
+        link: 'https://elearning.reb.rw/pluginfile.php/86285/mod_resource/content/1/GENERAL%20EDU-GSCS-S5-SB.pdf',
+        teacher: 'Ms. Grace I.',
+      },
+    ];
+
+    // Render courses
+    function renderCourses(filter = '') {
+      const grid = document.getElementById('courseGrid');
+      grid.innerHTML = '';
+      const favs = getFavorites();
+      let found = false;
+      courses.forEach(course => {
+        if (filter && !course.name.toLowerCase().includes(filter.toLowerCase())) return;
+        found = true;
+        const div = document.createElement('div');
+        div.className = 'course';
+        div.innerHTML = `
+          <button class="favorite-btn${favs.includes(course.name) ? ' favorited' : ''}" title="Favorite" onclick="toggleFavorite(event, '${course.name}')">&#10084;</button>
+          <span class="course-icon">${course.icon}</span>
+          <h4>${course.name}</h4>
+          <button class="course-link" onclick="event.stopPropagation();window.open('${course.link}','_blank')">Open Course</button>
+        `;
+        div.onclick = () => showModal(course);
+        grid.appendChild(div);
+      });
+      if (!found) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#888;font-size:1.2rem;">No courses found.</div>';
+      }
     }
+
+    // Modal logic
+    function showModal(course) {
+      document.getElementById('modalTitle').textContent = course.icon + ' ' + course.name;
+      document.getElementById('modalDesc').innerHTML = `<b>Teacher:</b> ${course.teacher}<br><br>${course.desc}`;
+      document.getElementById('modalLink').href = course.link;
+      document.getElementById('modalBg').classList.add('active');
+    }
+    function closeModal() {
+      document.getElementById('modalBg').classList.remove('active');
+    }
+
+    // Search/filter
+    function filterCourses() {
+      const val = document.getElementById('searchInput').value;
+      renderCourses(val);
+    }
+
+    // Favorite logic
+    function getFavorites() {
+      return JSON.parse(localStorage.getItem('meg_favorites') || '[]');
+    }
+    function toggleFavorite(e, name) {
+      e.stopPropagation();
+      let favs = getFavorites();
+      if (favs.includes(name)) {
+        favs = favs.filter(f => f !== name);
+      } else {
+        favs.push(name);
+      }
+      localStorage.setItem('meg_favorites', JSON.stringify(favs));
+      renderCourses(document.getElementById('searchInput').value);
+    }
+
+    // Initial render
+    renderCourses();
+
+    // Close modal on background click
+    document.getElementById('modalBg').onclick = function(e) {
+      if (e.target === this) closeModal();
+    };
   </script>
 <footer>
     <p>&copy;2025 ES Mudasomwa | PCB Courses</p>
