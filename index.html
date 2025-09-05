@@ -424,7 +424,7 @@
   display: none;
   position: absolute;
   right: 0;
-  background: #fff;
+  background: #3f9923;
   min-width: 170px;
   box-shadow: 0 8px 24px rgba(0,92,169,0.13);
   border-radius: 10px;
@@ -442,7 +442,7 @@
   transition: background 0.2s, color 0.2s;
 }
 .dropdown-content a:hover {
-  background: #e0eafc;
+  background: #24850b;
   color: #0072ce;
 }
 .dropdown:hover .dropdown-content,
@@ -484,34 +484,215 @@ margin-top: 1%;}
       background: linear-gradient(120deg, #e3f2fd 60%, #f7fafd 100%);
     }
 
+ nav {
+      background: #005ca9;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 6vw;
+      box-shadow: 0 2px 12px #005ca97a;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .site-logo {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 18px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a:hover {
+      background: #ffd200;
+      color: #005ca9;
+    }
 
+    .schedules-hero {
+      text-align: center;
+      padding: 48px 8vw 24px 8vw;
+      background: rgba(255,255,255,0.15);
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 4px 24px #005ca91a;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .schedules-hero h1 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #005ca9;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #fff, 0 1px 0 #ffd200;
+    }
+    .schedules-hero p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 18px;
+    }
+    .schedules-hero .cta-btn {
+      background: linear-gradient(90deg, #ffd200 0%, #74ebd5 100%);
+      color: #005ca9;
+      font-weight: bold;
+      border: none;
+      border-radius: 22px;
+      padding: 12px 32px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #005ca97a;
+      transition: background 0.2s, color 0.2s;
+      margin-top: 10px;
+    }
+    .schedules-hero .cta-btn:hover {
+      background: #005ca9;
+      color: #ffd200;
+    }
+
+    .schedule-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin: 32px 0 18px 0;
+    }
+    .schedule-controls select, .schedule-controls input {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid #74ebd5;
+      font-size: 1rem;
+      outline: none;
+      min-width: 140px;
+      background: #fff;
+      box-shadow: 0 2px 8px #005ca91a;
+      transition: border 0.2s;
+    }
+    .schedule-controls select:focus, .schedule-controls input:focus {
+      border: 2px solid #005ca9;
+    }
+
+    .timetable-container {
+      background: rgba(255,255,255,0.93);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #005ca91a;
+      max-width: 900px;
+      margin: 0 auto 32px auto;
+      padding: 28px 12px;
+      overflow-x: auto;
+      animation: fadeIn 1s;
+    }
+    .timetable-title {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #005ca9;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+    table.timetable {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+      font-size: 1.08rem;
+      background: transparent;
+    }
+    table.timetable th, table.timetable td {
+      border: 1px solid #74ebd5;
+      padding: 10px 8px;
+      text-align: center;
+      min-width: 90px;
+      transition: background 0.2s;
+    }
+    table.timetable th {
+      background: #74ebd5;
+      color: #005ca9;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    table.timetable td {
+      background: #fff;
+      color: #2c3e50;
+    }
+    table.timetable tr:hover td {
+      background: #e0eafc;
+    }
+    .download-btn {
+      display: inline-block;
+      margin: 18px auto 0 auto;
+      background: #005ca9;
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #005ca97a;
+      transition: background 0.2s, color 0.2s;
+    }
+    .download-btn:hover {
+      background: #ffd200;
+      color: #005ca9;
+    }
+
+    .notice-board {
+      background: linear-gradient(90deg, #ffd200 0%, #74ebd5 100%);
+      color: #005ca9;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 0 auto 28px auto;
+      max-width: 700px;
+      font-size: 1.08rem;
+      font-weight: bold;
+      box-shadow: 0 2px 8px #005ca97a;
+      text-align: center;
+      animation: fadeIn 1.2s;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .schedules-hero h1 { font-size: 1.5rem; }
+      .timetable-container { padding: 10px 2px; }
+      table.timetable th, table.timetable td { font-size: 0.98rem; min-width: 60px; padding: 7px 4px; }
+      .notice-board { font-size: 0.98rem; padding: 10px 6px; }
+      .nav-links { gap: 8px; }
+      nav { flex-direction: column; padding: 10px 2vw; }
+      .logo-title { font-size: 1.1rem; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
 
 
   </style>
 </head>
 <body>
-
-  <div id="animated-bg" style="position:fixed;z-index:-1;top:0;left:0;width:100vw;height:100vh;overflow:hidden;pointer-events:none;">
-    <svg width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:absolute;top:0;left:0;">
-      <circle id="bg-c1" cx="300" cy="200" r="110" fill="#74ebd5" opacity="0.18">
-        <animate attributeName="cy" values="200;300;200" dur="8s" repeatCount="indefinite"/>
-      </circle>
-      <circle id="bg-c2" cx="1600" cy="400" r="90" fill="#ffd200" opacity="0.13">
-        <animate attributeName="cx" values="1600;1500;1600" dur="7s" repeatCount="indefinite"/>
-      </circle>
-      <circle id="bg-c3" cx="900" cy="900" r="140" fill="#005ca9" opacity="0.10">
-        <animate attributeName="r" values="140;110;140" dur="9s" repeatCount="indefinite"/>
-      </circle>
-      <circle id="bg-c4" cx="400" cy="900" r="60" fill="#9face6" opacity="0.12">
-        <animate attributeName="cy" values="900;800;900" dur="6s" repeatCount="indefinite"/>
-      </circle>
-    </svg>
-  </div>
-  
-  <nav>
-    <div style="display: flex; align-items: center;">
-      <div class="site-logo" style="margin-right:14px;">
-        <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <nav>
+    <div class="logo-area">
+      <div class="site-logo">
+        <!-- School Logo SVG -->
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
           <defs>
             <radialGradient id="logo-bg" cx="32" cy="32" r="32" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#fff"/>
@@ -527,34 +708,32 @@ margin-top: 1%;}
               <stop offset="1" stop-color="#74ebd5"/>
             </linearGradient>
           </defs>
-          
           <circle cx="32" cy="32" r="30" fill="url(#logo-bg)" stroke="#005ca9" stroke-width="3"/>
           <circle cx="32" cy="32" r="30" fill="none" stroke="#ffd200" stroke-width="1.5" opacity="0.5"/>
-          
           <g>
             <polygon points="32,16 48,24 32,32 16,24" fill="url(#cap-gradient)" stroke="#005ca9" stroke-width="1.2"/>
             <rect x="28" y="32" width="8" height="4" rx="1.5" fill="#005ca9" stroke="#ffd200" stroke-width="1"/>
             <line x1="32" y1="32" x2="32" y2="40" stroke="#ffd200" stroke-width="1.5"/>
             <circle cx="32" cy="41.5" r="1.2" fill="#ffd200"/>
           </g>
-         
           <g>
             <rect x="20" y="44" width="24" height="7" rx="2.5" fill="url(#book-gradient)" stroke="#005ca9" stroke-width="1.2"/>
             <line x1="32" y1="44" x2="32" y2="51" stroke="#005ca9" stroke-width="1"/>
           </g>
-         
-          <text x="32" y="40" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial, sans-serif" font-weight="bold" fill="#005ca9" letter-spacing="2" style="text-shadow:0 2px 8px #fff,0 1px 0 #ffd200;">ESM</text>
+          <text x="32" y="40" text-anchor="middle" font-size="14" font-family="Segoe UI, Arial, sans-serif" font-weight="bold" fill="#005ca9" letter-spacing="2" style="text-shadow:0 2px 8px #fff,0 1px 0 #ffd200;">ESM</text>
         </svg>
       </div>
-      <h1 class="logo" style="margin:0;">ES Mudasomwa</h1>
+      <span class="logo-title">ES Mudasomwa</span>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html" style="background:#ffd200;color:#005ca9;">Home</a></li>
       <li><a href="quizapp.html">QuizApp</a></li>
+      <li><a href="tmtable.htm">Schedules</a></li>
       <li><a href="admission.html">Admissions</a></li>
-      <li><a href="campus3.html">Campus</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="campus3.html">Campus</a></li>   
       <li><a href="about.html">About</a></li>
+      
+
       <li class="dropdown">
       <a href="#" class="nav-btn login-btn">Login ▼</a>
       <div class="dropdown-content">
@@ -574,8 +753,6 @@ margin-top: 1%;}
     </ul>
   </nav>
 
-
-
   <section class="hero" style="position:relative;overflow:hidden;">
     <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;"></div>
     <h2 style="font-size:3.2rem;font-weight:900;letter-spacing:2px;line-height:1.1;animation:fadeInDown 1.2s;">
@@ -586,9 +763,13 @@ margin-top: 1%;}
     </p>
     <a href="admission.html" class="cta-btn" style="font-size:1.2rem;box-shadow:0 4px 16px #005ca97a;animation:fadeIn 2s;">🚀 Apply Now</a>
     <div style="margin-top:38px;animation:fadeIn 2.2s;">
-      <span style="background:#fff2; color:#ffd200; font-weight:bold; border-radius:8px; padding:8px 18px; margin:0 8px; font-size:1.1rem;">Digital Learning</span>
+      <span style="background:#fff2; color:#ffd200; font-weight:bold; border-radius:8px; padding:8px 18px; margin:0 8px; font-size:1.1rem;">
+       Quality Education
+      </span>
       <span style="background:#fff2; color:#74ebd5; font-weight:bold; border-radius:8px; padding:8px 18px; margin:0 8px; font-size:1.1rem;">Smart Campus</span>
-      <span style="background:#fff2; color:#005ca9; font-weight:bold; border-radius:8px; padding:8px 18px; margin:0 8px; font-size:1.1rem;">Future Ready</span>
+      <span style="background:#fff2; color:#005ca9; font-weight:bold; border-radius:8px; padding:8px 18px; margin:0 8px; font-size:1.1rem;">
+           Digital Labs
+      </span>
     </div>
   </section>
   <style>
@@ -597,6 +778,46 @@ margin-top: 1%;}
     @keyframes fadeIn { from { opacity:0;} to { opacity:1;} }
   </style>
 
+<section id="announcement-portal" style="max-width:900px;margin:36px auto 0 auto;padding:0 2vw;">
+  <div style="
+    background: linear-gradient(90deg, #ffd200 0%, #74ebd5 100%);
+    color: #005ca9;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px #005ca91a;
+    padding: 22px 28px;
+    font-size: 1.18rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
+    animation: fadeIn 1.2s;
+  ">
+    <span style="font-size:2rem;flex-shrink:0;">📢</span>
+    <span id="announcement-message">
+      Welcome to ES Mudasomwa! <b>Special Announcement:</b> 2025 Admissions are now open. Check the Admissions page for details!
+    </span>
+  </div>
+</section>
+
+<!-- ...existing code... -->
+
+<script>
+  // Example: You can update this message dynamically or fetch from server in the future
+  // To update, just change the textContent of #announcement-message
+  // Example for future dynamic update:
+  /*
+  fetch('/api/announcements')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('announcement-message').textContent = data.latest;
+    });
+  */
+</script>
+
+<!-- ...existing code... -->
+
+<!-- ...existing code... -->
 <section class="digital-stats" style="background:rgba(255,255,255,0.85);margin:40px auto 0 auto;padding:36px 0 18px 0;border-radius:18px;box-shadow:0 4px 24px #005ca91a;max-width:1100px;display:flex;justify-content:space-around;align-items:center;gap:30px;flex-wrap:wrap;">
   <div class="stat-card" style="text-align:center;">
     <div style="font-size:2.5rem;color:#ffd200;">👨‍🎓</div>
@@ -636,6 +857,10 @@ margin-top: 1%;}
     });
   });
 </script>
+
+
+
+
 <section class="damp">
   <section class="courses">
     <h3>Explore Our Courses</h3>
