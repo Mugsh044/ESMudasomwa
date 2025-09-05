@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Class Schedules & Timetables | ES Mudasomwa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      margin: 0;
+      min-height: 100vh;
+      color: #2c3e50;
+    }
+    nav {
+      background: #005ca9;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 6vw;
+      box-shadow: 0 2px 12px #005ca97a;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .site-logo {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 18px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a:hover {
+      background: #ffd200;
+      color: #005ca9;
+    }
+
+    .schedules-hero {
+      text-align: center;
+      padding: 48px 8vw 24px 8vw;
+      background: rgba(255,255,255,0.15);
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 4px 24px #005ca91a;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .schedules-hero h1 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #005ca9;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #fff, 0 1px 0 #ffd200;
+    }
+    .schedules-hero p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 18px;
+    }
+    .schedules-hero .cta-btn {
+      background: linear-gradient(90deg, #ffd200 0%, #74ebd5 100%);
+      color: #005ca9;
+      font-weight: bold;
+      border: none;
+      border-radius: 22px;
+      padding: 12px 32px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #005ca97a;
+      transition: background 0.2s, color 0.2s;
+      margin-top: 10px;
+    }
+    .schedules-hero .cta-btn:hover {
+      background: #005ca9;
+      color: #ffd200;
+    }
+
+    .schedule-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin: 32px 0 18px 0;
+    }
+    .schedule-controls select, .schedule-controls input {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid #74ebd5;
+      font-size: 1rem;
+      outline: none;
+      min-width: 140px;
+      background: #fff;
+      box-shadow: 0 2px 8px #005ca91a;
+      transition: border 0.2s;
+    }
+    .schedule-controls select:focus, .schedule-controls input:focus {
+      border: 2px solid #005ca9;
+    }
+
+    .timetable-container {
+      background: rgba(255,255,255,0.93);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #005ca91a;
+      max-width: 900px;
+      margin: 0 auto 32px auto;
+      padding: 28px 12px;
+      overflow-x: auto;
+      animation: fadeIn 1s;
+    }
+    .timetable-title {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #005ca9;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+    table.timetable {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+      font-size: 1.08rem;
+      background: transparent;
+    }
+    table.timetable th, table.timetable td {
+      border: 1px solid #74ebd5;
+      padding: 10px 8px;
+      text-align: center;
+      min-width: 90px;
+      transition: background 0.2s;
+    }
+    table.timetable th {
+      background: #74ebd5;
+      color: #005ca9;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    table.timetable td {
+      background: #fff;
+      color: #2c3e50;
+    }
+    table.timetable tr:hover td {
+      background: #e0eafc;
+    }
+    .download-btn {
+      display: inline-block;
+      margin: 18px auto 0 auto;
+      background: #005ca9;
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #005ca97a;
+      transition: background 0.2s, color 0.2s;
+    }
+    .download-btn:hover {
+      background: #ffd200;
+      color: #005ca9;
+    }
+
+    .notice-board {
+      background: linear-gradient(90deg, #ffd200 0%, #74ebd5 100%);
+      color: #005ca9;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 0 auto 28px auto;
+      max-width: 700px;
+      font-size: 1.08rem;
+      font-weight: bold;
+      box-shadow: 0 2px 8px #005ca97a;
+      text-align: center;
+      animation: fadeIn 1.2s;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .schedules-hero h1 { font-size: 1.5rem; }
+      .timetable-container { padding: 10px 2px; }
+      table.timetable th, table.timetable td { font-size: 0.98rem; min-width: 60px; padding: 7px 4px; }
+      .notice-board { font-size: 0.98rem; padding: 10px 6px; }
+      .nav-links { gap: 8px; }
+      nav { flex-direction: column; padding: 10px 2vw; }
+      .logo-title { font-size: 1.1rem; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo-area">
+      <div class="site-logo">
+        <!-- School Logo SVG -->
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <defs>
+            <radialGradient id="logo-bg" cx="32" cy="32" r="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff"/>
+              <stop offset="60%" stop-color="#74ebd5"/>
+              <stop offset="100%" stop-color="#005ca9"/>
+            </radialGradient>
+            <linearGradient id="cap-gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffd200"/>
+              <stop offset="1" stop-color="#005ca9"/>
+            </linearGradient>
+            <linearGradient id="book-gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#fff"/>
+              <stop offset="1" stop-color="#74ebd5"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="url(#logo-bg)" stroke="#005ca9" stroke-width="3"/>
+          <circle cx="32" cy="32" r="30" fill="none" stroke="#ffd200" stroke-width="1.5" opacity="0.5"/>
+          <g>
+            <polygon points="32,16 48,24 32,32 16,24" fill="url(#cap-gradient)" stroke="#005ca9" stroke-width="1.2"/>
+            <rect x="28" y="32" width="8" height="4" rx="1.5" fill="#005ca9" stroke="#ffd200" stroke-width="1"/>
+            <line x1="32" y1="32" x2="32" y2="40" stroke="#ffd200" stroke-width="1.5"/>
+            <circle cx="32" cy="41.5" r="1.2" fill="#ffd200"/>
+          </g>
+          <g>
+            <rect x="20" y="44" width="24" height="7" rx="2.5" fill="url(#book-gradient)" stroke="#005ca9" stroke-width="1.2"/>
+            <line x1="32" y1="44" x2="32" y2="51" stroke="#005ca9" stroke-width="1"/>
+          </g>
+          <text x="32" y="40" text-anchor="middle" font-size="14" font-family="Segoe UI, Arial, sans-serif" font-weight="bold" fill="#005ca9" letter-spacing="2" style="text-shadow:0 2px 8px #fff,0 1px 0 #ffd200;">ESM</text>
+        </svg>
+      </div>
+      <span class="logo-title">ES Mudasomwa</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quizapp.html">QuizApp</a></li>
+      <li><a href="admission.html">Admissions</a></li>
+      <li><a href="campus3.html">Campus</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="schedules.html" style="background:#ffd200;color:#005ca9;">Schedules</a></li>
+    </ul>
+  </nav>
+
+  <section class="schedules-hero">
+    <h1>📅 Class Schedules & Timetables</h1>
+    <p>Find your up-to-date class schedules and download timetables for every level and option. Stay organized and never miss a lesson!</p>
+    <button class="cta-btn" onclick="window.print()">🖨️ Print Timetable</button>
+  </section>
+
+  <div class="notice-board" id="noticeBoard">
+    <span>✨ <b>Notice:</b> Timetables are updated Termly. Please check regularly for changes or special events.</span>
+  </div>
+
+  <div class="schedule-controls">
+    <select id="levelSelect" onchange="updateTimetable()">
+      <option value="olevel">O'Level</option>
+      <option value="alevel">A'Level</option>
+      <option value="priv">Private Candidate</option>
+    </select>
+    <select id="optionSelect" onchange="updateTimetable()">
+      <option value="all">All Classes</option>
+      <option value="mcb">Senior1</option>
+      <option value="pcb">Senior2</option>
+      <option value="mce">Senior3</option>
+      <option value="meg">Senior4</option>
+      <option value="mce">Senior5</option>
+      <option value="meg">Senior6</option>
+    </select>
+    <select id="optionSelect" onchange="updateTimetable()">
+      <option value="all">All Options</option>
+      <option value="mcb">MCB</option>
+      <option value="pcb">PCB</option>
+      <option value="mce">MCE</option>
+      <option value="meg">MEG</option>
+      <option value="meg">NONE</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="Search subject..." oninput="updateTimetable()" />
+  </div>
+
+  <div class="timetable-container" id="timetableContainer">
+    <!-- Timetable will be rendered here -->
+  </div>
+
+  <button class="download-btn" onclick="downloadTimetable()">⬇️ Download as PDF</button>
+
+  <footer style="background:rgba(255,255,255,0.85);margin-top:40px;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:18px;padding:18px 0;">
+      <div class="site-logo">
+        <!-- School Logo SVG (small) -->
+        <svg width="38" height="38" viewBox="0 0 64 64" fill="none">
+          <defs>
+            <radialGradient id="logo-bg2" cx="32" cy="32" r="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff"/>
+              <stop offset="60%" stop-color="#74ebd5"/>
+              <stop offset="100%" stop-color="#005ca9"/>
+            </radialGradient>
+            <linearGradient id="cap-gradient2" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffd200"/>
+              <stop offset="1" stop-color="#005ca9"/>
+            </linearGradient>
+            <linearGradient id="book-gradient2" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#fff"/>
+              <stop offset="1" stop-color="#74ebd5"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="url(#logo-bg2)" stroke="#005ca9" stroke-width="3"/>
+          <g>
+            <polygon points="32,16 48,24 32,32 16,24" fill="url(#cap-gradient2)" stroke="#005ca9" stroke-width="1.2"/>
+            <rect x="28" y="32" width="8" height="4" rx="1.5" fill="#005ca9" stroke="#ffd200" stroke-width="1"/>
+            <line x1="32" y1="32" x2="32" y2="40" stroke="#ffd200" stroke-width="1.5"/>
+            <circle cx="32" cy="41.5" r="1.2" fill="#ffd200"/>
+          </g>
+          <g>
+            <rect x="20" y="44" width="24" height="7" rx="2.5" fill="url(#book-gradient2)" stroke="#005ca9" stroke-width="1.2"/>
+            <line x1="32" y1="44" x2="32" y2="51" stroke="#005ca9" stroke-width="1"/>
+          </g>
+          <text x="32" y="40" text-anchor="middle" font-size="12" font-family="Segoe UI, Arial, sans-serif" font-weight="bold" fill="#005ca9" letter-spacing="2" style="text-shadow:0 2px 8px #fff,0 1px 0 #ffd200;">ESM</text>
+        </svg>
+      </div>
+      <div>
+        <div style="font-weight:bold;color:#005ca9;">ES Mudasomwa</div>
+        <div style="font-size:0.98rem;color:#333;">&copy;2025 | Class Schedules & Timetables</div>
+      </div>
+    </div>
+    <div style="text-align:center;font-size:0.97rem;color:#005ca9;">
+      <span>Contact: <a href="mailto:info@esmudasomwa.rw" style="color:#0072ce;">info@esmudasomwa.rw</a></span> |
+      <span>Tel: <a href="tel:+250788123456" style="color:#0072ce;">+250 788 123 456</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Example timetable data (replace with your real data or fetch from server)
+   // ...existing code...
+  
+    // Updated timetable data: 10 subjects per day
+    const timetables = {
+      olevel: {
+        all: [
+          ["Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          ["7:00-7:45", "Math", "English", "Kinyarwanda", "Math", "Science"],
+          ["7:45-8:30", "Science", "Math", "English", "Kinyarwanda", "Math"],
+          ["8:30-9:15", "History", "Science", "Math", "English", "Kinyarwanda"],
+          ["9:15-10:00", "Geography", "History", "Science", "Math", "English"],
+          ["10:00-10:30", "Break", "Break", "Break", "Break", "Break"],
+          ["10:30-11:15", "ICT", "Geography", "Math", "Science", "Math"],
+          ["11:15-12:00", "French", "ICT", "Geography", "Math", "Science"],
+          ["12:00-12:45", "Entrepreneurship", "French", "ICT", "Geography", "Math"],
+          ["12:45-1:30", "Literature", "Entrepreneurship", "French", "ICT", "Geography"],
+          ["1:30-2:15", "RE", "Literature", "Entrepreneurship", "French", "ICT"]
+        ],
+        mcb: [
+          ["Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          ["7:00-7:45", "Math", "Biology", "Chemistry", "Math", "Physics"],
+          ["7:45-8:30", "Chemistry", "Math", "Biology", "Physics", "Math"],
+          ["8:30-9:15", "Physics", "Chemistry", "Math", "Biology", "Chemistry"],
+          ["9:15-10:00", "ICT", "Physics", "Chemistry", "Math", "Biology"],
+          ["10:00-10:30", "Break", "Break", "Break", "Break", "Break"],
+          ["10:30-11:15", "English", "ICT", "Physics", "Chemistry", "Math"],
+          ["11:15-12:00", "Kinyarwanda", "English", "ICT", "Physics", "Chemistry"],
+          ["12:00-12:45", "French", "Kinyarwanda", "English", "ICT", "Physics"],
+          ["12:45-1:30", "Entrepreneurship", "French", "Kinyarwanda", "English", "ICT"],
+          ["1:30-2:15", "RE", "Entrepreneurship", "French", "Kinyarwanda", "English"]
+        ],
+        // ...add more options as needed
+      },
+      alevel: {
+        all: [
+          ["Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          ["7:00-7:45", "Math", "Economics", "Geography", "Math", "Entrepreneurship"],
+          ["7:45-8:30", "Geography", "Math", "Economics", "Entrepreneurship", "Math"],
+          ["8:30-9:15", "Entrepreneurship", "Geography", "Math", "Economics", "Geography"],
+          ["9:15-10:00", "ICT", "Entrepreneurship", "Geography", "Math", "Economics"],
+          ["10:00-10:30", "Break", "Break", "Break", "Break", "Break"],
+          ["10:30-11:15", "French", "ICT", "Entrepreneurship", "Geography", "Math"],
+          ["11:15-12:00", "Literature", "French", "ICT", "Entrepreneurship", "Geography"],
+          ["12:00-12:45", "RE", "Literature", "French", "ICT", "Entrepreneurship"],
+          ["12:45-1:30", "English", "RE", "Literature", "French", "ICT"],
+          ["1:30-2:15", "Kinyarwanda", "English", "RE", "Literature", "French"]
+        ],
+        meg: [
+          ["Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          ["7:00-7:45", "Math", "Economics", "Geography", "Math", "Entrepreneurship"],
+          ["7:45-8:30", "Geography", "Math", "Economics", "Entrepreneurship", "Math"],
+          ["8:30-9:15", "Entrepreneurship", "Geography", "Math", "Economics", "Geography"],
+          ["9:15-10:00", "ICT", "Entrepreneurship", "Geography", "Math", "Economics"],
+          ["10:00-10:30", "Break", "Break", "Break", "Break", "Break"],
+          ["10:30-11:15", "French", "ICT", "Entrepreneurship", "Geography", "Math"],
+          ["11:15-12:00", "Literature", "French", "ICT", "Entrepreneurship", "Geography"],
+          ["12:00-12:45", "RE", "Literature", "French", "ICT", "Entrepreneurship"],
+          ["12:45-1:30", "English", "RE", "Literature", "French", "ICT"],
+          ["1:30-2:15", "Kinyarwanda", "English", "RE", "Literature", "French"]
+        ],
+        // ...add more options as needed
+      },
+      priv: {
+        all: [
+          ["Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          ["7:00-7:45", "Math", "English", "Kinyarwanda", "Math", "Science"],
+          ["7:45-8:30", "Science", "Math", "English", "Kinyarwanda", "Math"],
+          ["8:30-9:15", "History", "Science", "Math", "English", "Kinyarwanda"],
+          ["9:15-10:00", "Geography", "History", "Science", "Math", "English"],
+          ["10:00-10:30", "Break", "Break", "Break", "Break", "Break"],
+          ["10:30-11:15", "ICT", "Geography", "Math", "Science", "Math"],
+          ["11:15-12:00", "French", "ICT", "Geography", "Math", "Science"],
+          ["12:00-12:45", "Entrepreneurship", "French", "ICT", "Geography", "Math"],
+          ["12:45-1:30", "Literature", "Entrepreneurship", "French", "ICT", "Geography"],
+          ["1:30-2:15", "RE", "Literature", "Entrepreneurship", "French", "ICT"]
+        ]
+      }
+    };
+// ...existing code...
+
+// ...existing code...
+
+
+
+
+    function updateTimetable() {
+      const level = document.getElementById('levelSelect').value;
+      const option = document.getElementById('optionSelect').value;
+      const search = document.getElementById('searchInput').value.toLowerCase();
+
+      let data = timetables[level][option] || timetables[level]['all'];
+      if (!data) {
+        document.getElementById('timetableContainer').innerHTML = "<div style='text-align:center;color:#d32f2f;font-weight:bold;'>No timetable found for this selection.</div>";
+        return;
+      }
+
+      // Filter by subject if search is entered
+      if (search) {
+        data = [data[0]].concat(
+          data.slice(1).filter(row => row.some(cell => cell.toLowerCase().includes(search)))
+        );
+        if (data.length === 1) {
+          document.getElementById('timetableContainer').innerHTML = "<div style='text-align:center;color:#d32f2f;font-weight:bold;'>No results for your search.</div>";
+          return;
+        }
+      }
+
+      // Render table
+      let html = `<div class="timetable-title">${capitalize(level)} - ${option === 'all' ? 'All Options' : option.toUpperCase()} Timetable</div>`;
+      html += `<table class="timetable"><thead><tr>`;
+      data[0].forEach(h => html += `<th>${h}</th>`);
+      html += `</tr></thead><tbody>`;
+      data.slice(1).forEach(row => {
+        html += `<tr>`;
+        row.forEach(cell => html += `<td>${cell}</td>`);
+        html += `</tr>`;
+      });
+      html += `</tbody></table>`;
+      document.getElementById('timetableContainer').innerHTML = html;
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    // Download timetable as PDF (simple print for now)
+    function downloadTimetable() {
+      window.print();
+    }
+
+    // Initial render
+    updateTimetable();
+  </script>
+</body>
+</html>
