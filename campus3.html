@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   <link rel="icon" href="logo.png" type="image/png">
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ES Mudasomwa</title>
@@ -303,6 +304,9 @@
     .logo { font-size: 1.8rem; font-weight: bold; }
     .nav-links { list-style: none; display: flex; gap: 20px; }
     .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+     .refer {
+      background-color: #e3f2fd; padding: 18px; text-align: center; border-radius: 10px;
+    }
 
 
   </style>
@@ -368,7 +372,7 @@
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
-  <!-- Digital Stats Section -->
+ 
   <section class="digital-stats" style="background:rgba(255,255,255,0.85);margin:40px auto 0 auto;padding:36px 0 18px 0;border-radius:18px;box-shadow:0 4px 24px #005ca91a;max-width:1100px;display:flex;justify-content:space-around;align-items:center;gap:30px;flex-wrap:wrap;">
     <div class="stat-card" style="text-align:center;">
       <div style="font-size:2.5rem;color:#ffd200;">👨‍🎓</div>
@@ -392,7 +396,7 @@
     </div>
   </section>
   <script>
-    // Animated counters
+   
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.stat-num').forEach(function(el) {
         const target = +el.getAttribute('data-target');
@@ -428,7 +432,7 @@
         <li class="adv-card"><a href="gallery.html">Relations</a></li>
         <li class="adv-card" id="moz"><a href="gallery.html">Competition</a></li>
       </ul>
-<!-- Floating Chatbot Button -->
+
 <div id="chatbot-btn" style="position:fixed;bottom:28px;right:28px;z-index:9999;">
   <button onclick="openChatbot()" style="background:#005ca9;color:#fff;border:none;border-radius:50%;width:62px;height:62px;box-shadow:0 4px 18px #005ca97a;font-size:2.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;">
     💬
@@ -450,7 +454,7 @@
   }
 </script>
   <style>
-    /* Animated card effects */
+   
     .adv-card {
       transition: transform 0.35s cubic-bezier(.4,2,.3,1), box-shadow 0.3s;
       box-shadow: 0 2px 10px #005ca91a;
@@ -464,6 +468,16 @@
     }
   </style>
     </div>
+
+    <section class="refer">
+    <h2> 🎁Invite a Friend</h2>
+        <p>Invite friends to join ES Mudasomwa and earn discounts or gifts!</p>
+        <form onsubmit="referFriend(event)">
+    <input type="email" id="friendEmail" placeholder="friend@example.com" required />
+    <br>
+    <button onclick="sendInvite()">Send Invite</button>
+    </form>
+  </section>
 
      <section class="testimonial-slider-mini">
   <div class="testimonial-mini-header">
@@ -481,7 +495,7 @@
       <span class="testimonial-mini-text">"The environment and facilities are inspiring!"</span>
       <span class="testimonial-mini-meta">
         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Malik" class="testimonial-mini-avatar">
-        Vanessa, Senior 5
+        Vanessa, Senior 6
       </span>
     </div>
     <div class="testimonial-mini-card">
@@ -521,7 +535,7 @@ function nextMiniTestimonial() {
   showMiniTestimonial(miniIndex);
 }
 
-// Change every 5 seconds
+
 setInterval(() => {
   nextMiniTestimonial();
 },5000);
@@ -544,5 +558,118 @@ setInterval(() => {
     <p>&copy;2025 ES Mudasomwa | Campus Highlights</p>
     
   </footer>
+  <style>
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 2vw;
+      }
+      .logo {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 8px;
+        padding-left: 0;
+      }
+      .nav-links li {
+        margin-bottom: 4px;
+      }
+      body {
+        padding: 4px;
+      }
+      #campus {
+        padding: 12px 2vw 10px 2vw;
+        margin: 18px auto;
+        max-width: 98vw;
+      }
+      h2 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 1rem;
+        margin-bottom: 18px;
+      }
+      .campus-gallery {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+      .campus-gallery img,
+      .campus-gallery .oshakul-film-year img {
+        width: 98vw;
+        max-width: 98vw;
+        height: 120px;
+      }
+      .facilities {
+        padding: 18px 2vw 10px 2vw;
+        margin-top: 18px;
+      }
+      .facilities h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+      .facilities ul {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .facilities ul li {
+        flex: 1 1 98vw;
+        font-size: 1rem;
+        padding: 8px 4px;
+      }
+      #testimonial-slider {
+        padding: 10px;
+        font-size: 1rem;
+        margin-top: 18px;
+      }
+      .testimonial-slider-mini {
+        max-width: 98vw;
+        min-width: 0;
+        padding: 0 4px;
+        height: 120px;
+      }
+      .testimonial-mini-header {
+        font-size: 1rem;
+        padding: 6px 0 2px 0;
+      }
+      .testimonial-mini-text {
+        max-width: 48%;
+        font-size: 0.85rem;
+      }
+      .testimonial-mini-meta {
+        font-size: 0.8rem;
+      }
+      .testimonial-mini-next-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1.1rem;
+        right: 6px;
+        bottom: 6px;
+      }
+      #chatbot-btn {
+        right: 10px;
+        bottom: 10px;
+      }
+      #chatbot-btn button {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+      }
+      #chatbot-modal {
+        right: 10px;
+        bottom: 60px;
+        width: 98vw;
+        min-width: 0;
+        max-width: 98vw;
+      }
+      #chatbot-modal iframe {
+        height: 140px;
+      }
+    }
+  </style>
 </body>
 </html>
