@@ -761,7 +761,11 @@ margin-top: 1%;}
     <p style="font-size:1.3rem;margin-bottom:30px;color:#fff;text-shadow:0 2px 8px #005ca9;animation:fadeInUp 1.2s;">
       • Ubumenyi  • Ubupfura  • Gukunda igihugu  • Gukorera kugihe
     </p>
-    <a href="admission.html" class="cta-btn" style="font-size:1.2rem;box-shadow:0 4px 16px #005ca97a;animation:fadeIn 2s;">🚀 Apply Now</a>
+    <a href="admission.html" class="cta-btn" id="heroApplyBtn" style="font-size:1.2rem;box-shadow:0 4px 16px #005ca97a;animation:fadeIn 2s;">🚀 Apply Now</a>
+
+
+  
+    
     <div style="margin-top:38px;animation:fadeIn 2.2s;">
       <span style="background:#fff2; color:#ffd200; font-weight:bold; border-radius:8px; padding:8px 18px; margin:0 8px; font-size:1.1rem;">
        Quality Education
@@ -876,16 +880,7 @@ margin-top: 1%;}
     <ul><li><button onclick="showAlert()"> 💻 Online Programs </button></li><li><button onclick="howAlert()">🏫 On-Campus Classes </button></li><li ><button onclick="shwAlert()">🔄 Blended Learning</button></li></ul>
   </section>
 
-  <section class="refer">
-    <h2> 🎁Invite a Friend</h2>
-        <p>Invite friends to join ES Mudasomwa and earn discounts or gifts!</p>
-        <form onsubmit="referFriend(event)">
-    <input type="email" id="friendEmail" placeholder="friend@example.com" required />
-    <br>
-    <button onclick="sendInvite()">Send Invite</button>
-    </form>
-  </section>
-
+  
   <section class="campus">
   <h3>Our Campus</h3>
   <div class="campus-slider">
@@ -897,11 +892,6 @@ margin-top: 1%;}
 </section>
 
 
-  <section class="prospectus">
-    <h3>📘 Our Prospectus</h3>
-    <p>Learn more about our programs, values, and campus life.</p>
-    <nav id="prop"><a href="prospectus.html"class="cta-btn">Download Now</nav></a>
-  </section>
  
   <section class="faculty">
     <h3>👩‍🏫 Meet Our Faculty</h3>
@@ -918,7 +908,7 @@ margin-top: 1%;}
       </div>
       <div class="card adv-card">
         <img src="DOD.jpeg"width="80px" height="80px" alt="Mr.Yvens" />
-        <h4>Mrs. Jacqueline MU.</h4>
+        <h4>Mrs. Vestine KA.</h4>
         <p>Dean Of Discipline | 5+ years of experience</p>
       </div>
     </div>
@@ -1174,6 +1164,7 @@ const campusPhotos = [
   "trad5.jpeg",
   "trad6.jpeg",
   "trad7.jpeg",
+  "shati.jpg",
 ];
 let campusIndex = 0;
 const campusSlide = document.getElementById('campusSlide');
@@ -1235,6 +1226,32 @@ showCampusSlide(campusIndex);
     color: #005ca9;
   }
 </style>
-</body>
-</html>
+<!-- Sticky Apply Now Button -->
+  
 
+<script>
+  // ...existing code...
+
+  // Sticky Apply Now Button: always functional and instant
+  (function() {
+    function goToApply() {
+      window.location.href = 'admission.html';
+    }
+    var stickyBtn = document.getElementById('stickyApplyBtn');
+    var heroBtn = document.getElementById('heroApplyBtn');
+    if (stickyBtn) {
+      stickyBtn.addEventListener('click', goToApply);
+    }
+    if (heroBtn) {
+      heroBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        goToApply();
+      });
+    }
+  })();
+
+ 
+
+  // ...existing code...
+</script>
+<!-- ...existing code... -->
